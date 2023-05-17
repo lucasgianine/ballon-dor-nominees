@@ -1,0 +1,170 @@
+/* Importando fontes diretamente do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Raleway:wght@400;600&family=Rubik+Mono+One&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+#section_home {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    /* background: #2D2727; */
+    background-image: url(assets/img/fundo_boladeouro.png);
+    /* background-position: 55%; */
+    background-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Configurando o header */
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Montserrat', sans-serif;
+}
+
+header .logo {
+    position: relative;
+    max-width: 150px;
+}
+
+header .navegar ul {
+    position: relative;
+    display: flex;
+}
+
+header .navegar li {
+    list-style: none;
+}
+
+header .navegar li a{
+    color: #ECF8E5;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    margin-left: 100px;
+    transition: 0.1s ease-in-out;
+}
+header .navegar li a:hover{
+    color: #EBD937;
+    text-shadow: 0 1px 1px #EBD937;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    margin-left: 100px;
+    transition: 0.1s ease-in-out;
+}
+
+/* Estilizando os containers */
+.container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container .text {
+    position: relative;
+    max-width: 600px;
+    margin-right: 20px;
+}
+
+.container .text h2 {
+    color: #EBD937;
+    font-size: 3em;
+    margin-bottom: 10px;
+    line-height: 0.5em;
+    font-weight: 700;
+    font-family: 'Rubik Mono One', sans-serif;
+}
+
+.container .text p {
+    color: #ECF8E5;
+    font-family: 'Raleway', sans-serif;
+}
+
+.container .text .b_color {
+    color: #EBD937;
+    font-family: 'Raleway', sans-serif;
+}
+
+.container .text a {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 25px;
+    background-color: #EBD937;
+    color: #121212;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border: 1px solid #121212;
+    border-radius: 25px;
+    transition: 0.2s ease-in-out;
+    font-family: 'Montserrat', sans-serif;
+}
+.container .text a:hover {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 25px;
+    background-color: #121212;
+    color: #EBD937;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border: 1px solid #EBD937;
+    border-radius: 25px;
+    transition: 0.2s ease-in-out;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Estilizando o segundo container */
+.container_column {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container_column .text {
+    position: relative;
+    max-width: 600px;
+    margin-right: 20px;
+}
+
+.container_column .text p {
+    color: #ECF8E5;
+    font-family: 'Raleway', sans-serif;
+}
+
+.container .text .b_color {
+    color: #EBD937;
+    font-family: 'Raleway', sans-serif;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    /* background: #2D2727; */
+    background: #121212;
+    background-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
