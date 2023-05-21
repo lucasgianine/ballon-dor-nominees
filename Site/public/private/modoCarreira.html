@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modo Carreira</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/dash.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <body id="painel">
+        <div class="div_menu_lateral">
+            <a href="#"><img src="../assets/img/logo_ballondor.png" class="logo"></a>
+            <button onclick="irVotos()">
+                Votos
+            </button>
+            <button onclick="irLegend()">
+                Legend Team
+            </button>
+            <button onclick="irBattle()">
+                Legend Battle
+            </button>
+            <button onclick="irQuiz()">
+                Quiz
+            </button>
+            <button class="pageAtual" onclick="irCarreira()">
+                Modo Carreira
+            </button>
+
+            <footer>
+                <button class="btnSair" onclick="sair(); return false">Deslogar</button>
+                © 2023
+            </footer>
+        </div>
+        <div class="div_conteiner_conteudo">
+            <div class="form_principal">
+                <p>Informe seu nome!</p>
+                <input placeholder="Nome de craque" id="input_nomeDeCraque">
+            </div>
+            <div class="form_principal">
+                <p>Informe sua posição!</p>
+                <input placeholder="Posição que desejar" id="input_posicaoDeCraque">
+            </div>
+            <div class="box_conteudo">
+                <div class="conteudo">
+                    Entreiou na base do:
+                    <div class="class_carreira" id="div_timeBase"></div>
+                    Subiu pro profissional do:
+                    <div class="class_carreira" id="div_timeProfissional"></div>
+                    Jogou na Europa no:
+                    <div class="class_carreira" id="div_timeEuropa"></div>
+                    Foi ídolo no:
+                    <div class="class_carreira" id="div_timeIdolo"></div>
+                    Aposentou-se no:
+                    <div class="class_carreira" id="div_timeAposentadoria"></div>
+                </div>
+                <div class="conteudo2">
+                    Total de jogos:
+                    <div class="class_carreira" id="div_jogos"></div>
+                    Total de gols:
+                    <div class="class_carreira" id="div_gols"></div>
+                    Total de assistências:
+                    <div class="class_carreira" id="div_assistencias"></div>
+                    Total de títulos:
+                    <div class="class_carreira" id="div_titulos"></div>
+                    Total de Bolas de ouro:
+                    <div id="div_bolasDeOuro"></div>
+                </div>
+            </div>
+
+            <button onclick="sortear()">Iniciar carreira!</button>
+
+            <div id="div_mensagem"></div>
+        </div>
+    </body>
+
+</html>
+</body>
+
+</html>
+<!-- SweetAlert2 -->
+<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+<!-- Funções de redirecionamento de páginas -->
+<script src="../js/redirecionar.js"></script>
+
+<!-- Script -->
+<script>
+    var timesBrasil = [
+        // Brasil - Campeonato Brasileiro Seria A & B
+        'Palmeiras',
+        'Santos FC',
+        'Corinthians',
+        'São Paulo FC',
+        'Vasco da Gama',
+        'Fluminense',
+        'CR Flamengo',
+        'Fortaleza',
+        'Ceará SC',
+        'RedBull Bragantino',
+        'Grêmio',
+        'Bahia',
+        'Internacional',
+        'Goiás',
+        'Botafogo',
+        'Cruzeiro',
+        'Coritiba',
+        'Cuiabá',
+        'Athlético-PR',
+        'Atlético-MG',
+        'América-MG',
+        'Ponte Preta',
+        'EC Vitória',
+        'Sport Recife',
+        'Ituano',
+        'Chapecoense',
+        'Taubaté FC',
+        'Guarani'
+    ];
+
+    var timesEuropa = [
+        // Alemanha - Bundesliga
+        'RedBull Leipzig',
+        'Bayern de Munique',
+        'Union Berlin',
+        'Borussia Dortmund',
+        'Bayer Leverkusen',
+        'Eintracht Frankfurt',
+        'Hoffenheim',
+        // Espanha - La Liga
+        'Atlético de Madrid',
+        'Real Madrid',
+        'Barcelona',
+        'Sevilla',
+        'Real Sociedad',
+        'Real Betis',
+        'Villareal',
+        // França - Ligue 1
+        'Paris Saint-Germain',
+        'Mônaco',
+        'Olympique Lyonnais',
+        'Olympique de Marseille',
+        'LOSC Lille',
+        // Inglaterra - Premier League
+        'Manchester United',
+        'Manchester City',
+        'Newcastle United',
+        'Liverpool FC',
+        'Arsenal',
+        'Tottenham Spurs',
+        'Chelsea',
+        'West Ham',
+        'Wolverhampton',
+        'Aston Villa',
+        // Holanda - Eredivise
+        'Ajax',
+        'PSV',
+        'Feyenoord',
+        // Italia - Seria A TIM
+        'Juventus',
+        'AC Milan',
+        'Internazionale de Milano',
+        'AC Roma',
+        'Napoli',
+        'Atalanta',
+        'Fiorentina',
+        // Portugal - Liga Portugal Bwin
+        'Benfica',
+        'Porto FC',
+        'Sporting FC',
+        // Turquia - SüperLig
+        'Galatasaray',
+        'Besiktas'
+    ];
+
+    var timesDiversos = [
+        // Brasil
+        'Palmeiras',
+        'Santos FC',
+        'Corinthians',
+        'São Paulo FC',
+        'Vasco da Gama',
+        'Guarani',
+        'Fluminense',
+        'CR Flamengo',
+        'Fortaleza',
+        'Ceará SC',
+        'RedBull Bragantino',
+        'Grêmio',
+        'Bahia',
+        'Internacional',
+        'Goiás',
+        'Botafogo',
+        'Cruzeiro',
+        'Coritiba',
+        'Cuiabá',
+        'Athlético-PR',
+        'Atlético-MG',
+        'América-MG',
+        'Ponte Preta',
+        'EC Vitória',
+        'Sport Recife',
+        'Ituano',
+        'Chapecoense',
+        'Taubaté FC',
+        // Estados Unidos - MLS
+        'Inter Miami',
+        'NewYork RedBull',
+        'Orlando City',
+        'LA Galaxy',
+        'DC United',
+        'LAFC',
+        'Chicago Fire',
+        'Atlanta United',
+        'New York City FC',
+        // Argentina
+        'Lanús',
+        'Independiente',
+        'Boca Júniors',
+        'Racing',
+        'River Plate',
+        "Newell's Old Boys",
+        'Talleres',
+        'Estudiantes',
+        // México
+        'Guadalajara',
+        'Tigres',
+        'Club América',
+        'Monterrey',
+        // Arábia
+        'Al-Nassr',
+        'Al-Hilal',
+        'Al-Ittihad',
+        'Al-Fateh',
+        'Al-Shabab',
+        // China - Superliga Chinesa
+        'Shanghai Port',
+        'Zhejiang FC',
+        'Shanghai Shenhua FC',
+        'Changchun Yatai FC',
+        // Europa
+        'AC Roma',
+        'Napoli',
+        'Atalanta',
+        'Fiorentina',
+        'Real Sociedad',
+        'Real Betis',
+        'Villareal',
+        'Union Berlin',
+        'Borussia Dortmund',
+        'Bayer Leverkusen',
+        'Eintracht Frankfurt',
+        'Hoffenheim',
+        'Bangu',
+        'Real Madrid',
+        'Barcelona',
+        'Newcastle United',
+        'Liverpool FC',
+        'Arsenal',
+        'Tottenham Spurs',
+        'Ajax',
+        'PSV',
+        'Feyenoord',
+        'Paris Saint-Germain',
+        'Mônaco',
+        'Olympique Lyonnais',
+        'Olympique de Marseille',
+        'LOSC Lille',
+        'Besiktas',
+        'Galatasaray'
+    ];
+
+    function sortear() {
+        // Capturando dados do usuário
+        var nome = input_nomeDeCraque.value;
+        var posicao = input_posicaoDeCraque.value;
+
+        // Sorteando os times dos jogadores
+        var base = parseInt(Math.random() * 27); // Times Brasileiros
+        var profissional = parseInt(Math.random() * 27); // Times Brasileiros
+        var europa = parseInt(Math.random() * 43); // Times europeus
+        var idolo = parseInt(Math.random() * 86); // Times diversos
+        var aposentadoria = parseInt(Math.random() * 86); // Times diversos
+
+        var jogos = parseInt(Math.random() * (801) + 100);
+        var gols = parseInt(Math.random() * 801);
+        var assist = parseInt(Math.random() * 701);
+        var titulos = parseInt(Math.random() * 40);
+        var bola_de_ouro = parseInt(Math.random() * 9);
+
+        if (nome == "" || posicao == "") {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: `Insira seu nome e/ou sua posição!`,
+                showConfirmButton: true,
+            })
+        } else {
+            div_bolasDeOuro.innerHTML = "";
+            div_mensagem.innerHTML = "";
+
+            for (var i = 1; i <= bola_de_ouro; i++) {
+                div_bolasDeOuro.innerHTML += `<img src="https://cdn-icons-png.flaticon.com/512/250/250618.png" style="width: 50px;">`;
+                console.log(`${i} e` + bola_de_ouro)
+            }
+
+            div_timeBase.innerHTML = `<b>${timesBrasil[base]}</b>`
+            div_timeProfissional.innerHTML = `<b>${timesBrasil[profissional]}</b>`;
+            div_timeEuropa.innerHTML = `<b>${timesEuropa[europa]}</b>`;
+            div_timeIdolo.innerHTML = `<b>${timesDiversos[idolo]}</b>`;
+            div_timeAposentadoria.innerHTML = `<b>${timesDiversos[aposentadoria]}</b>`;
+
+            div_jogos.innerHTML = `<b>${jogos}</b>`;
+            div_gols.innerHTML = `<b>${gols}</b>`;
+            div_assistencias.innerHTML = `<b>${assist}</b>`;
+            div_titulos.innerHTML = `<b>${titulos}</b>`;
+
+            if (bola_de_ouro > 7 || (gols > 780 && assist > 299)) {
+                div_mensagem.innerHTML = `${nome}, você e o Pelé são uma LENDA!`;
+            } else if (bola_de_ouro > 4 && bola_de_ouro <= 7 && gols > 499 && assist > 149) {
+                div_mensagem.innerHTML = `${nome}, bem vindo a mesa dos maiores!`;
+            } else if (bola_de_ouro > 4 && bola_de_ouro <= 7 && gols < 499 && assist < 149) {
+                div_mensagem.innerHTML = `${nome}, muitos se orgulharão em tê-lo visto jogar!`;
+            } else if (bola_de_ouro > 0 || (gols > 199 && assist > 49)) {
+                div_mensagem.innerHTML = `${nome} foi diferenciado(a)`;
+            } else if (bola_de_ouro == 0 && gols > 399) {
+                div_mensagem.innerHTML = `${nome} teve uma carreira subestimada`;
+            } else {
+                div_mensagem.innerHTML = `${nome}, bela carreira!`;
+            }
+        }
+    }
+</script>

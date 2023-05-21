@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Painel Inicial | Dashboard</title>
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="../../assets/images/logosProjeto/flaticon-HOPTECH.png" type="image/x-icon">
+
+        <!-- Importando CSS do dashboard -->
+        <link rel="stylesheet" href="../css/dash.css">
+
+        <!-- Importando FontAwesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    </head>
+
+    <body id="painel">
+        <div class="div_menu_lateral">
+            <a href="#"><img src="../assets/img/logo_ballondor.png" class="logo"></a>
+            <button class="pageAtual" onclick="irVotos()">
+                Votos
+            </button>
+            <button onclick="irLegend()">
+                Legend Team
+            </button>
+            <button onclick="irBattle()">
+                Legend Battle
+            </button>
+            <button onclick="irQuiz()">
+                Quiz
+            </button>
+            <button onclick="irCarreira()">
+                Modo Carreira
+            </button>
+
+            <footer>
+                <button class="btnSair" onclick="sair(); return false">Deslogar</button>
+                © 2023
+            </footer>
+        </div>
+        <div class="div_conteiner_conteudo">
+                <div><!--  --></div>
+                <h3 class="titulo">Jogadores mais votados</h3>
+
+                <div>
+                    <canvas></canvas>
+                </div>
+
+                <div>
+                    <span id="se-votado">Você votou em: <span id="jogador_votado"></span></span>
+                    <span id="se-nao-votado">Você ainda não votou em ninguém</span>
+                </div>
+        </div>
+
+
+    </body>
+
+    </html>
+
+    <!-- Importando a biblioteca ChartJS: -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Importando o plugin DataLabels do ChartJS: -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <!-- Importando o back-end do ChartJS: -->
+    <script src="../dashboard-cliente/js/dashboardCliente.js"></script>
+</body>
+</html>
+
+<!-- Funções de redirecionamento de páginas -->
+<script src="../js/redirecionar.js"></script>
