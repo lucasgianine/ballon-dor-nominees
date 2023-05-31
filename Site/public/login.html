@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo(a) de volta!</title>
+    <link rel="shortcut icon" href="assets/img/favicon_logo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/cadastro.css">
+</head>
+
+<body>
+    <div class="box">
+        <form action="">
+
+            <div class="input-group">
+                <label for="">Usuário</label>
+                <input id="input_usuario" placeholder="Nickname" required>
+            </div>
+            <div class="input-group">
+                <label for="">Senha</label>
+                <input type="password" placeholder="Senha" id="input_senha" required>
+            </div>
+            <p>Não tenho uma conta! <a href="cadastro.html">Cadastrar!</a></p>
+        </form>
+        <div class="input-group">
+            <button onclick="entrar()">Entrar</button>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function entrar() {
+
+
+        var usuarioVar = input_usuario.value;
+        var senhaVar = input_senha.value;
+
+        if (usuarioVar == "" || senhaVar == "") {
+            // cardErro.style.display = "block"
+            console.log("teste")
+            // finalizarAguardar();
+            return false;
+        }
+        else {
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    usuarioServer: usuarioVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        sessionStorage.EMAIL_USUARIO = json.usuario;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.idUsuario;
+                        sessionStorage.ID_USUARIO = json.email;
+
+                        setTimeout(function () {
+                            window.location = "private/painel.html";
+                        }, 3000); // apenas para exibir o loading
+
+                    });
+
+                } else {
+
+                    // swal("Ops", "Usuário e/ou senha inválido(s)", "error")
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                        // finalizarAguardar(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+            return false;
+        }
+    }
+</script>

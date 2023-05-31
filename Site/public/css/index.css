@@ -1,0 +1,348 @@
+/* Importando fontes diretamente do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Montserrat:wght@800&family=Raleway:wght@400;600&family=Rubik+Mono+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#home {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    /* background: #2D2727; */
+    background-image: url(../assets/img/fundo_boladeouro.png);
+    /* background-position: 55%; */
+    background-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Configurando o header */
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Montserrat', sans-serif;
+}
+
+header .logo {
+    position: relative;
+    max-width: 180px;
+}
+
+header .navegar ul {
+    position: relative;
+    display: flex;
+}
+
+header .navegar li {
+    list-style: none;
+}
+
+header .navegar li a {
+    color: #ECF8E5;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    margin-left: 100px;
+    transition: 0.1s ease-in-out;
+}
+
+header .navegar li a:hover {
+    color: #EBD937;
+    text-shadow: 0 1px 1px #EBD937;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    margin-left: 100px;
+    transition: 0.1s ease-in-out;
+}
+
+/* Estilizando os containers */
+.container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container .text {
+    position: relative;
+    max-width: 600px;
+    margin-right: 20px;
+}
+
+.container .text h2 {
+    color: #EBD937;
+    font-size: 3em;
+    margin-bottom: 10px;
+    line-height: 0.5em;
+    font-weight: 700;
+    font-family: 'Rubik Mono One', sans-serif;
+}
+
+.container .text p {
+    color: #ECF8E5;
+    font-family: 'Raleway', sans-serif;
+}
+
+.container .text .b_color {
+    color: #EBD937;
+    font-family: 'Raleway', sans-serif;
+}
+
+.container .text a {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 25px;
+    background-color: #EBD937;
+    color: #121212;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border: 1px solid #121212;
+    border-radius: 25px;
+    transition: 0.2s ease-in-out;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container .text a:hover {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 25px;
+    background-color: #121212;
+    color: #EBD937;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border: 1px solid #EBD937;
+    border-radius: 25px;
+    transition: 0.2s ease-in-out;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Estilizando o segundo container */
+#monte-seu-time {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    /* background: #2D2727; */
+    background-image: url(../assets/img/bg_legendteam.jpg);
+    /* background-position: 55%; */
+    background-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#monte-seu-time .text p {
+    display: flex;
+    justify-content: center;
+    color: #121212;
+    font-family: 'Kanit', sans-serif;
+}
+
+#monte-seu-time .text h2 {
+    color: #EBD937;
+    font-size: 3em;
+    margin-bottom: 10px;
+    line-height: 0.5em;
+    font-weight: 700;
+    font-family: 'Rubik Mono One', sans-serif;
+    text-shadow: 0px 1px 2px #121212;
+}
+
+#monte-seu-time .container img {
+    border-radius: 25px;
+    border: 3px solid #EBD937;
+    box-shadow: 0px 5px 20px #121212;
+}
+
+/* Aba de "Crie sua carreira" */
+
+#crie-sua-carreira {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    /* background: #2D2727; */
+    background-image: url(../assets/img/bg_modoCarreira.png);
+    /* background-position: 55%; */
+    background-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#crie-sua-carreira .text p {
+    display: flex;
+    justify-content: center;
+    color: #121212;
+    font-family: 'Kanit', sans-serif;
+}
+
+#crie-sua-carreira .text h2 {
+    color: #EBD937;
+    font-size: 3em;
+    margin-bottom: 10px;
+    line-height: 0.5em;
+    font-weight: 700;
+    font-family: 'Rubik Mono One', sans-serif;
+    text-shadow: 0px 1px 2px #121212;
+}
+
+#crie-sua-carreira .container img {
+    width: 500px;
+}
+
+/* Botão personalizado */
+
+/* Container da aba "Sobre" */
+#sobre {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    /* background: #2D2727; */
+    background-image: url(../assets/img/bg_sobre.png);
+    /* background-position: 55%; */
+    background-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.valores {
+    background-color: #EBD937;
+    border: 1px solid #121212;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px #EBD937;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Raleway', sans-serif;
+}
+.valores p {
+    text-align: center;
+}
+.valores .container_box {
+    justify-content: center;
+}
+.valores .container_box .boxes {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.box {
+    width: 280px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.box img {
+    width: 170px;
+}
+.box p {
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+/* Container do ranking (ChartJS) */
+.box-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    left: 14%;
+    top: 20%;
+    background-color: #f8f8f8;
+    width: 70%;
+    border-radius: 15px;
+    border: 3px solid#EBD937;
+    box-shadow: 0px 2px 10px #FFDD3C;
+
+}
+
+#chart_votos {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#chart_quiz {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ranking {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    background-image: url(../assets/img/bg_boladeouro.png);
+    background-size: 100%;
+}
+
+#ranking .text p {
+    display: flex;
+    justify-content: center;
+    color: #ECF8E5;
+    font-family: 'Raleway', sans-serif;
+}
+
+#ranking .text h2 {
+    color: #ECF8E5;
+    font-size: 1.3em;
+    display: flex;
+    justify-content: center;
+    line-height: 0.5em;
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+}
+
+#ranking .text .b_color {
+    color: #EBD937;
+    font-family: 'Raleway', sans-serif;
+}
+
+#ranking .text p select {
+    color: #121212;
+    border: 2px solid #EBD937;
+    border-radius: 10px;
+    outline: none;
+    width: 15vw;
+    height: 5vh;
+    font-family: 'Raleway', sans-serif;
+    padding-left: 5px;
+}

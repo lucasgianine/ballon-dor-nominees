@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Painel Inicial | Dashboard</title>
+    <link rel="shortcut icon" href="../assets/img/favicon_logo.png" type="image/x-icon">
+
+    <!-- Importando CSS do dashboard -->
+    <link rel="stylesheet" href="../css/dash.css">
+
+    <!-- Importando FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body class="background">
+    <div id="painel">
+        <div class="div_menu_lateral">
+            <a href="#"><img src="../assets/img/ballondor_black_logo.png" class="logo"></a>
+            <button class="pageAtual" onclick="irPainel()">
+                Painel
+            </button>
+            <!-- <button onclick="irVotos()">
+                Vote
+            </button> -->
+            <button onclick="irQuiz()">
+                Quiz
+            </button>
+            <button onclick="irCarreira()">
+                Modo Carreira
+            </button>
+
+            <footer>
+                <button class="btnSair" onclick="sair(); return false">Deslogar</button>
+                © Ballon D'or
+            </footer>
+        </div>
+        <div class="div_conteiner_conteudo">
+            <div class="box-chart">
+                <div id="ranking">
+                    <p>
+                        <select name="" id="ranking_ballondor">
+                            <option value="mais_votados">Os mais votados</option>
+                            <option value="quiz_ranking">Pontuação dos Usuários</option>
+                        </select>
+                    </p>
+                    <canvas id="chart_votos"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>
+<!-- Importando a biblioteca ChartJS: -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Importando o plugin DataLabels do ChartJS: -->
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+<!-- Importando o back-end do ChartJS: -->
+<script src="../dashboard-cliente/js/dashboardCliente.js"></script>
+
+<!-- Funções de redirecionamento de páginas -->
+<script src="../js/redirecionar.js"></script>
+
+<script>
+    Chart.register(ChartDataLabels); // Registrando o plugin DataLabels
+
+    // Gráfico de ranking
+    const data_votos = {
+        labels: ['Vini Jr.', 'Messi', 'Neymar Jr.', 'Mbappé', 'B. Silva', 'De Bruyne', 'Benzema', 'Modric', 'Lautaro'], // Os maiores
+        datasets: [{
+            label: 'Os mais votados',
+            backgroundColor: '#EBD937',
+            borderColor: '#F7DF1E',
+            borderWidth: 1,
+            tension: 0.3, // Curvatura do gráfico
+            data: [13, 12, 10, 7, 7, 6, 4, 4, 2] // Qtd. de títulos
+        }],
+        options: {
+            interaction: {
+                mode: 'index',
+                intersect: false,
+                display: false
+            },
+            layout: {
+                padding: 5
+            },
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+            }
+        }
+    };
+
+    const data_quiz = {
+        labels: ['Lucas', 'Daniel', 'Rafinha', 'Mazzoni', 'Noá', 'Vinicius', 'Jonas', 'Juhrs', 'Lorena'], // As maiores equipes
+        datasets: [{
+            label: 'Os maiores pontuadores',
+            backgroundColor: '#EBD937',
+            borderColor: '#F7DF1E',
+            borderWidth: 1,
+            tension: 0.3, // Curvatura do gráfico
+            data: [80, 60, 50, 40, 30, 20, 20, 10, 10] // Qtd. de títulos por equipe
+        }],
+        options: {
+            interaction: {
+                mode: 'index',
+                intersect: false
+            },
+            layout: {
+                padding: 5
+            },
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            }
+        }
+    };
+
+
+    const config_votos = {
+        type: 'bar',
+        data: data_votos,
+        options: {}
+    };
+
+    const config_quiz = {
+        type: 'bar',
+        data: data_quiz,
+        options: {}
+    }
+</script>
+
+<script>
+    const chart_votos = new Chart(
+        document.getElementById('chart_votos'),
+        config_votos
+    );
+
+    const chart_quiz = new Chart(
+        document.getElementById('chart_quiz'),
+        config_quiz
+    )
+</script>

@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-BR"> <!-- Definindo a linguagem da página -->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Ballon D'or - Inicio</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Ballon D'or Nominees</title>
+    <link rel="shortcut icon" href="assets/img/favicon_logo.png" type="image/x-icon">
 
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/index.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="js/login.js"></script> <!-- JS do login -->
 </head>
+
 <body>
-    <section id="section_home">
+    <section id="home">
         <!-- Criando e linkando o header -->
         <header>
-            <a href="#">
-                <img src="assets/img/logo_ballondor.png" alt="Sambafoot" class="logo">
+            <a href="index.html">
+                <img src="assets/img/ballondornominees_logo.png" alt="Sambafoot" class="logo">
             </a>
 
             <nav class="navegar">
                 <ul>
                     <li id="aba_principal">
-                        <a href="index.html#section_home">Home</a>
+                        <a href="index.html#home">Home</a>
                     </li>
                     <li>
-                        <a href="index.html#section_sobre">Sobre</a>
+                        <a href="index.html#sobre">Sobre</a>
                     </li>
                     <li>
-                        <a href="#">Ranking</a>
+                        <a href="index.html#ranking">Ranking</a>
                     </li>
                     <li>
-                        <a href="#">Quiz</a>
+                        <a href="private/inicioQuiz.html">Quiz</a>
                     </li>
                     <li class="btn_acessar">
-                        <a href="#">Entrar</a>
+                        <a href="login.html">Entrar</a>
                     </li>
                 </ul>
             </nav>
@@ -57,37 +63,219 @@
     </section>
 
     <!-- Section sobre a premiação -->
-    <!-- <section id="section_sobre">
+    <section id="sobre">
+        <div class="container">
+            <div class="valores">
+                <div class="container_box">
+                    <div class="boxes">
+                        <div class="box">
+                            <img src="assets/imgs/planet-earth_color.png">
+                            <h4>Conteúdo</h4>
+                            <p>O foco no meu site é sobre <b>futebol</b>, quero trazer entretenimento nesse site para
+                                que
+                                fique divertido, aqui você pode: <b>Montar seu time</b> e ver seu entrosamento, postar
+                                mensagens falando sua opinião sobre a Ballon D'or, votar no seu jogador favorito e
+                                participar de Quiz!</p>
+                        </div>
+                        <div class="box">
+                            <img src="assets/imgs/lightbulb_color.png">
+                            <h4>Aprendizado</h4>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores
+                                provident magnam
+                                vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid
+                                accusantium cum dicta
+                                minima.</p>
+                        </div>
+                        <div class="box">
+                            <img src="assets/imgs/growth_color.png">
+                            <h4>Valores</h4>
+                            <p><b>Humildade</b> em ouvir, respeitar e que
+                                ninguém é maior que ninguém. <b>Ousadia</b> para se arriscar em novos desafios e para
+                                não
+                                abaixar a cabeça quando surge uma dificuldade. <b>Lealdade</b> pois os que estão do meu
+                                lado
+                                são importante pra mim e sempre me ajudaram, e sempre faço por eles o que fariam e
+                                fizeram
+                                por mim.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Section de apresentação ao "Legend Team" realizado com o Gustavo Gomes (1ADSB) -->
+    <!-- <section id="monte-seu-time">
         <div class="container">
             <div class="text">
-                <h2>Sobre a premiação</h2> <br>
+                <h2>LEGEND TEAM</h2> <br>
                 <p>
-                    O <b>MOMENTO DE DECIDIR</b> QUEM É O <b class="b_color">MELHOR JOGADOR</b><br>
-                    DA TEMPORADA CHEGOU! <b>QUEM MERECE ESSE PRÊMIO?</b>
+                    MONTE SEU TIME DOS SONHOS ESCOLHENDO OS MELHORES JOGADORES DE
+                    TODOS OS TEMPOS! LEMBRE-SE QUE OS MELHORES JUNTOS NEM SEMPRE<br>
+                    FORMARÃO A MELHOR EQUIPE, JUNTE ENTROSAMENTO COM QUALIDADE!
                 </p>
-                <a href="#">Cadastre-se e vote!</a>
+
+                <p> <br> </p>
+
+                <p>
+                    FEITO EM JAVASCRIPT, ESSE MODO É APENAS UM PROJETO QUE PRETENDO REALIZAR
+                    JUNTO DE UM COLEGA, A IDEIA VEIO DIRETAMENTE DELE!
+                </p>
+                <a href="#">Monte seu time!</a>
             </div>
 
             <div class="imagem">
-                <img src="assets/img/seasondor.png" alt="OS MAIORES!" style="width: 347px;">
+                <img src="assets/img/asset_legendteam.PNG"
+                    style="width: 447px;">
             </div>
         </div>
-    </section> -->
+    </section> --> <!-- Item: Desejável -->
 
-    <!-- Section dos principais atletas -->
-    <section id="section_sobre">
-        <div class="container_column">
+    <!-- Section de apresentação ao "Modo Carreira" -->
+    <section id="crie-sua-carreira">
+        <div class="container">
             <div class="imagem">
-                <img src="assets/img/principais-jogadores.png" alt="OS MAIORES!" style="width: 847px;">
-            </div>
-            <div class="text">
-                <p>
-                    O <b>MOMENTO DE DECIDIR</b> QUEM É O <b class="b_color">MELHOR JOGADOR</b><br>
-                    DA TEMPORADA CHEGOU! <b>QUEM MERECE ESSE PRÊMIO?</b>
-                </p>
+                <img src="assets/img/modoCarreira.png"
+                    style="width: 447px;">
             </div>
 
+            <div class="text">
+                <h2>MODO CARREIRA</h2> <br>
+                <p>
+                    SIMULE SUA CARREIRA COMO SE VOCÊ FOSSE JOGADOR DE FUTEBOL, VEJA SUAS
+                     ESTATÍSTICAS, OS TIMES EM QUE JOGOU E QUANTAS BOLAS DE OURO VOCÊ VENCEU!<br>
+                </p>
+
+                <p> <br> </p>
+
+                <p>
+                    ESTE MODO É UMA MANEIRA DE DIVERTIR O USUÁRIO E SIMULAR UMA CARREIRA DE FUTEBOL, COMPARTILHE COM SEUS AMIGOS A SUA CARREIRA!
+                </p>
+                <a href="#">Logue para simular!</a>
+            </div>
         </div>
     </section>
+
+    <!-- Section de ranking, mostrando a classificação dos vencedores da BALLON D'OR
+    contendo SELECT trazendo dados diferentes -->
+    <section id="ranking">
+        <div class="text">
+            <h2>
+                Escolha como quer visualizar o ranking!
+            </h2>
+
+            <p> <br> </p>
+
+            <p>
+                <select name="" id="ranking_ballondor">
+                    <option value="os_maiores">Os maiores vencedores</option>
+                    <option value="as_maiores">As maiores vencedoras</option>
+                    <option value="nacionalidades">Seleções com Ballon D'or</option>
+                </select>
+            </p>
+
+            <p> <br> </p>
+        </div>
+
+        <div class="box-chart">
+            <canvas id="chart_maiores"></canvas>
+        </div>
+    </section>
+
+    <section id="valores">
+
+    </section>
+
+    <!-- <footer>
+        <span>Realizado por Lucas dos Santos - 1/2023 &copy;</span>
+    </footer> -->
+
 </body>
+
 </html>
+
+<!-- Importando a biblioteca ChartJS: -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Importando o plugin DataLabels do ChartJS: -->
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+<script>
+    Chart.register(ChartDataLabels); // Registrando o plugin DataLabels
+
+
+    // Gráfico de ranking
+    const data_maiores = {
+        labels: ['Pelé', 'Messi', 'Cristiano', 'Crujiff', 'Platini', 'van Basten', 'Di Stéfano', 'Beckenbauer', 'Keegan'], // Os maiores
+        datasets: [{
+            label: 'Os maiores vencedores',
+            backgroundColor: '#EBD937',
+            borderColor: '#F7DF1E',
+            borderWidth: 1,
+            tension: 0.3, // Curvatura do gráfico
+            data: [7, 7, 5, 3, 3, 3, 2, 2, 2] // Qtd. de títulos
+        }],
+        options: {
+            interaction: {
+                mode: 'index',
+                intersect: false
+            },
+            layout: {
+                padding: 5
+            },
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            }
+        }
+    };
+
+    const data_equipe = {
+        labels: ['Barcelona', 'Real Madrid', 'Juventus', 'Milan', 'Bayern de Mun.', 'Man. United', 'Dín. de Kiev', 'Internazionale', 'Hamburgo'], // As maiores equipes
+        datasets: [{
+            label: 'Os maiores vencedores',
+            backgroundColor: '#EBD937',
+            borderColor: '#F7DF1E',
+            borderWidth: 1,
+            tension: 0.3, // Curvatura do gráfico
+            data: [12, 12, 8, 8, 5, 4, 2, 2, 2] // Qtd. de títulos por equipe
+        }],
+        options: {
+            interaction: {
+                mode: 'index',
+                intersect: false
+            },
+            layout: {
+                padding: 5
+            },
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            }
+        }
+    };
+
+
+    const config_maiores = {
+        type: 'bar',
+        data: data_maiores,
+        options: {}
+    };
+
+    const config_equipe = {
+        type: 'bar',
+        data: data_equipe,
+        options: {}
+    }
+</script>
+
+<script>
+    const chart_maiores = new Chart(
+        document.getElementById('chart_maiores'),
+        config_maiores
+    );
+
+    const chart_equipe = new Chart(
+        document.getElementById('chart_equipe'),
+        config_equipe
+    )
+</script>

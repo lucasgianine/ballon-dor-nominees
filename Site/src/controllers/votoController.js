@@ -1,4 +1,4 @@
-var usuarioModel = require("../models/usuarioModel");
+var votoModel = require("../models/votoModel");
 
 var sessoes = [];
 
@@ -8,7 +8,7 @@ function testar(req, res) {
 }
 
 function listar(req, res) {
-    usuarioModel.listar()
+    votoModel.listar()
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -34,7 +34,7 @@ function entrar(req, res) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
         
-        usuarioModel.entrar(usuario, senha)
+        votoModel.entrar(usuario, senha)
             .then(
                 function (resultado) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);
@@ -62,28 +62,11 @@ function entrar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var nome = req.body.nomeServer;
-    var usuario = req.body.usuarioServer;
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
-    var confirmarSenha = req.body.confirmarSenhaServer;
-
-    // Faça as validações dos valores
-    if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    } else if (usuario == undefined) {
-        res.status(400).send("Seu username está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está undefined!");
-    } else if (confirmarSenha == undefined) {
-        res.status(400).send("Confirmar senha está undefined!");
-    } else {
-        console.log("passei por aqui")
+    var insertId = req.body.insertIdServer;
+    var jogadorVotado = req.body.jogadorVotadoServer;
         
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, usuario, email, senha, confirmarSenha)
+        // Passe os valores como parâmetro e vá para o arquivo votoModel.js
+        votoModel.cadastrar(insertId, jogadorVotado)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -99,11 +82,7 @@ function cadastrar(req, res) {
                 }
             );
     }
-}
 
 module.exports = {
-    entrar,
     cadastrar,
-    listar,
-    testar
 }

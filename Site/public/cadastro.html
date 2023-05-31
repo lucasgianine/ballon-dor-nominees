@@ -1,19 +1,133 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - SambaFoot</title>
+    <title>Cadastre-se - Ballon D'or Nominees</title>
+    <link rel="shortcut icon" href="assets/img/favicon_logo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/cadastro.css">
 </head>
+
 <body>
-    Usuario: <input type="text" id="input_usuario"> <br>
-    Email: <input type="text" id="input_email"> <br>
-    Senha: <input type="password" id="input_senha"> <br>
-    Confirmar senha: <input type="password" id="input_confirmar_senha"> <br>
-    <button onclick="cadastrar()">Cadastrar</button>
+    <div class="box">
+        <div class="voto-box">
+            <p>
+                <select id="jogadores_nominees" onchange="mudarJogador()">
+                    <option value="1">Lionel Messi</option>
+                    <option value="2">Neymar Jr.</option>
+                    <option value="3">Vinicius Jr.</option>
+                    <option value="4">Erling Haaland</option>
+                    <option value="5">Kylian Mbappé</option>
+                    <option value="6">Kevin De Bruyne</option>
+                    <option value="7">Rafael Leão</option>
+                    <option value="8">Bernardo Silva</option>
+                    <option value="9">Lautaro Martínez</option>
+                    <option value="10">Rodrygo Goes</option>
+                    <option value="11">Cristiano Ronaldo</option>
+                </select>
+            </p>
+            <div class="detalhes" id="div_desempenho">
+            </div>
+        </div>
+
+        <div class="form-box">
+            <h2>Cadastrar-se</h2>
+            <form action="#">
+                <div class="input-group">
+                    <label for="nomeCompleto">Nome*</label>
+                    <input id="input_nome" placeholder="Digite seu nome" required>
+                </div>
+                <div class="input-group">
+                    <label for="usuario">Usuário*</label>
+                    <input id="input_usuario" placeholder="Digite seu nome de usuário" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">E-mail*</label>
+                    <input id="input_email" placeholder="Digite seu e-mail" required>
+                </div>
+                <div class="input-group">
+                    <label for="senha">Senha*</label>
+                    <input type="password" id="input_senha" placeholder="Digite sua senha" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirmar_senha">Confirmar senha*</label>
+                    <input type="password" id="input_confirmar_senha" placeholder="Confirme sua senha" required>
+                </div>
+            </form>
+            <div class="input-group">
+                <button onclick="cadastrar()">Cadastrar</button>
+            </div>
+
+            <p>Já tenho um cadastro? <a href="login.html">Entrar!</a></p>
+        </div>
+    </div>
 </body>
+
 </html>
+
+<!-- Usuario: <input type="text" id="input_usuario"> <br>
+Email:  <br>
+Senha: <input type="password" id="input_senha"> <br>
+Confirmar senha: <input type="password" id="input_confirmar_senha"> <br>
+<button onclick="cadastrar()">Cadastrar</button> -->
+
+<script>
+    // Lista com imagem dos jogadores
+    var listaJogadores = [
+        '<iframe id="sofa-player-embed-12994" src="https://widgets.sofascore.com/embed/player/12994?widgetBackground=Black" style="height:600px!important;max-width:600px!important;width:100%!important;" frameborder="0" scrolling=""></iframe>', // Lionel Messi
+        '<iframe id="sofa-player-embed-124712" src="https://widgets.sofascore.com/embed/player/124712?widgetBackground=Black" style="height:600px!important;max-width:600px!important;width:100%!important;" frameborder="0" scrolling=""></iframe>', // Neymar JR.
+        '<iframe id="sofa-player-embed-868812" src="https://widgets.sofascore.com/embed/player/868812?widgetBackground=Black" style="height:600px!important;max-width:600px!important;width:100%!important;" frameborder="0" scrolling=""></iframe>', // Vini JR.
+        '<iframe id="sofa-player-embed-839956" src="https://widgets.sofascore.com/embed/player/839956?widgetBackground=Black" style="height:600px!important;max-width:600px!important;width:100%!important;" frameborder="0" scrolling=""></iframe>', // Erling Haaland
+        '<iframe id="sofa-player-embed-826643" src="https://widgets.sofascore.com/embed/player/826643?widgetBackground=Black" style="height:600px!important;max-width:600px!important;width:100%!important;" frameborder="0" scrolling=""></iframe>', // Kylian Mbappé
+        '<iframe id="sofa-player-embed-70996" src="https://widgets.sofascore.com/embed/player/70996?widgetBackground=Black" style="height:600px!important;max-width:600px!important;width:100%!important;" frameborder="0" scrolling=""></iframe>', // Kevin De Bruyne
+        '<iframe id="sofa-player-embed-138534" src="https://widgets.sofascore.com/embed/player/138534?widgetBackground=Black" style="height:600px!important;max-width:600px!important;width:100%!important;" frameborder="0" scrolling=""></iframe>', // Rafael Leão
+        '<iframe id="sofa-player-embed-823984" src="https://widgets.sofascore.com/embed/player/823984?widgetBackground=Black" style="height:600px!important;max-width:600px!important;width:100%!important;" frameborder="0" scrolling=""></iframe>', // Lautaro Martínez
+        '<iframe id="sofa-player-embed-331209" src="https://widgets.sofascore.com/embed/player/331209?widgetBackground=Black" style="height:600px!important;max-width:600px!important;width:100%!important;" frameborder="0" scrolling=""></iframe>', // Bernardo Silva
+        '<iframe id="sofa-player-embed-910536" src="https://widgets.sofascore.com/embed/player/910536?widgetBackground=Black" style="height:600px!important;max-width:600px!important;width:100%!important;" frameborder="0" scrolling=""></iframe>', // Rodrygo Goes
+        '<iframe id="sofa-player-embed-750" src="https://widgets.sofascore.com/embed/player/750?widgetBackground=Black" style="height:600px!important;max-width:600px!important;width:100%!important;" frameborder="0" scrolling=""></iframe>' // Cristiano Ronaldo
+    ];
+
+    
+    function mudarJogador() {
+    var select = document.querySelector('#jogadores_nominees');
+
+    let optionValue = select.options[select.selectedIndex];
+    let value = optionValue.value;
+
+    if (value == '1') {
+        div_desempenho.innerHTML = listaJogadores[0];
+    } else if (value == '2') {
+        div_desempenho.innerHTML = listaJogadores[1];
+    } else if (value == '3') {
+        div_desempenho.innerHTML = listaJogadores[2];
+    } else if (value == '4') {
+        div_desempenho.innerHTML = listaJogadores[3];
+    } else if (value == '5') {
+        div_desempenho.innerHTML = listaJogadores[4];
+    } else if (value == '6') {
+        div_desempenho.innerHTML = listaJogadores[5];
+    } else if (value == '7') {
+        div_desempenho.innerHTML = listaJogadores[6];
+    } else if (value == '8') {
+        div_desempenho.innerHTML = listaJogadores[7];
+    } else if (value == '9') {
+        div_desempenho.innerHTML = listaJogadores[8];
+    } else if (value == '10') {
+        div_desempenho.innerHTML = listaJogadores[9];
+    } else if (value == '11') {
+        div_desempenho.innerHTML = listaJogadores[10];
+    }
+
+
+    }
+    
+    mudarJogador()
+
+    
+</script>
 
 <script>
     function cadastrar() {
@@ -21,63 +135,69 @@
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
+        var nomeVar = input_nome.value;
         var usuarioVar = input_usuario.value;
         var emailVar = input_email.value;
         var senhaVar = input_senha.value;
         var confirmarSenhaVar = input_confirmar_senha.value;
+        var jogadorVotadoVar = jogadores_nominees.value;
 
-        if (usuarioVar == "" || emailVar == "" || senhaVar == "" || confirmarSenhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        if (nomeVar == "" || usuarioVar == "" || emailVar == "" || senhaVar == "" || confirmarSenhaVar == "") {
+            console.log("teste")
+        } else {
+            // Enviando o valor da nova input
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nomeVar,
+                    usuarioServer: usuarioVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                    confirmarSenhaServer: confirmarSenhaVar,
+                })
+            }).then(function (resposta) {
 
-            // finalizarAguardar();
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    resposta.json().then(res => {
+                        fetch('/voto/cadastrar', {
+                            method: 'POST',
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                insertIdServer: res.insertId,
+                                jogadorVotadoServer: jogadorVotadoVar
+                            })
+                        })
+                    })
+                    alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000")
+
+                    // limparFormulario();
+                    // finalizarAguardar();
+                } else {
+                    alert("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                // finalizarAguardar();
+            });
+
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                usuarioServer: usuarioVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-                confirmarSenhaServer: confirmarSenhaVar
-            })
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                cardErro.style.display = "block";
-
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                setTimeout(() => {
-                    window.location = "login.html";
-                }, "2000")
-
-                limparFormulario();
-                // finalizarAguardar();
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            // finalizarAguardar();
-        });
-
-        return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
 </script>
