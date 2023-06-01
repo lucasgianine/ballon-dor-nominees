@@ -18,23 +18,14 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="background">
+<body class="background2">
 
     <body id="painel">
         <div class="div_menu_lateral">
-            <a href="#"><img src="../assets/img/ballondor_black_logo.png" class="logo"></a>
+            <a href="../index.html"><img src="../assets/img/ballondor_black_logo.png" class="logo"></a>
             <button onclick="irPainel()">
                 Painel
             </button>
-            <!-- <button onclick="irVotos()">
-                Vote
-            </button> -->
-            <!-- <button onclick="irLegend()">
-                Legend Team
-            </button> -->
-            <!-- <button onclick="irBattle()">
-                Legend Battle
-            </button> -->
             <button onclick="irQuiz()">
                 Quiz
             </button>
@@ -49,12 +40,12 @@
         </div>
         <div class="div_conteiner_conteudo">
             <div class="form_principal">
-                <p>Informe seu nome!</p>
-                <input placeholder="Nome de craque" id="input_nomeDeCraque">
+                <p>Craque:</p>
+                <p id="nome_craque"></p>
             </div>
             <div class="form_principal">
-                <p>Informe sua posição!</p>
-                <input placeholder="Posição que desejar" id="input_posicaoDeCraque">
+                <p>Posição que jogadoria:</p>
+                <p id="posicao_craque"></p>
             </div>
             <div class="box_conteudo">
                 <div class="conteudo">
@@ -285,9 +276,8 @@
     ];
 
     function sortear() {
-        // Capturando dados do usuário
-        var nome = input_nomeDeCraque.value;
-        var posicao = input_posicaoDeCraque.value;
+        var nome = 'Cebolinha'
+        var posicao = 'Meio-campista';
 
         // Sorteando os times dos jogadores
         var base = parseInt(Math.random() * 27); // Times Brasileiros
@@ -302,46 +292,46 @@
         var titulos = parseInt(Math.random() * 40);
         var bola_de_ouro = parseInt(Math.random() * 9);
 
-        if (nome == "" || posicao == "") {
-            Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: `Insira seu nome e/ou sua posição!`,
-                showConfirmButton: true,
-            })
+        div_bolasDeOuro.innerHTML = "";
+
+        for (var i = 1; i <= bola_de_ouro; i++) {
+            div_bolasDeOuro.innerHTML += `<img src="https://cdn-icons-png.flaticon.com/512/250/250618.png" style="width: 50px;">`;
+            console.log(`${i} e` + bola_de_ouro)
+        }
+
+        div_timeBase.innerHTML = `<b>${timesBrasil[base]}</b>`
+        div_timeProfissional.innerHTML = `<b>${timesBrasil[profissional]}</b>`;
+        div_timeEuropa.innerHTML = `<b>${timesEuropa[europa]}</b>`;
+        div_timeIdolo.innerHTML = `<b>${timesDiversos[idolo]}</b>`;
+        div_timeAposentadoria.innerHTML = `<b>${timesDiversos[aposentadoria]}</b>`;
+
+        div_jogos.innerHTML = `<b>${jogos}</b>`;
+        div_gols.innerHTML = `<b>${gols}</b>`;
+        div_assistencias.innerHTML = `<b>${assist}</b>`;
+        div_titulos.innerHTML = `<b>${titulos}</b>`;
+
+        if (bola_de_ouro > 7 || (gols > 780 && assist > 299)) {
+            div_mensagem.innerHTML = `${nome}, você e o Pelé são uma LENDA!<br>`;
+        } else if (bola_de_ouro > 4 && bola_de_ouro <= 7 && gols > 499 && assist > 149) {
+            div_mensagem.innerHTML = `${nome}, bem vindo a mesa dos maiores!<br>`;
+        } else if (bola_de_ouro > 4 && bola_de_ouro <= 7 && gols < 499 && assist < 149) {
+            div_mensagem.innerHTML = `${nome}, muitos se orgulharão em tê-lo visto jogar!<br>`;
+        } else if (bola_de_ouro > 0 || (gols > 199 && assist > 49)) {
+            div_mensagem.innerHTML = `${nome} foi diferenciado(a)<br>`;
+        } else if (bola_de_ouro == 0 && gols > 399) {
+            div_mensagem.innerHTML = `${nome} teve uma carreira subestimada<br>`;
         } else {
-            div_bolasDeOuro.innerHTML = "";
-            div_mensagem.innerHTML = "";
+            div_mensagem.innerHTML = `${nome}, bela carreira!<br>`;
+        }
 
-            for (var i = 1; i <= bola_de_ouro; i++) {
-                div_bolasDeOuro.innerHTML += `<img src="https://cdn-icons-png.flaticon.com/512/250/250618.png" style="width: 50px;">`;
-                console.log(`${i} e` + bola_de_ouro)
-            }
-
-            div_timeBase.innerHTML = `<b>${timesBrasil[base]}</b>`
-            div_timeProfissional.innerHTML = `<b>${timesBrasil[profissional]}</b>`;
-            div_timeEuropa.innerHTML = `<b>${timesEuropa[europa]}</b>`;
-            div_timeIdolo.innerHTML = `<b>${timesDiversos[idolo]}</b>`;
-            div_timeAposentadoria.innerHTML = `<b>${timesDiversos[aposentadoria]}</b>`;
-
-            div_jogos.innerHTML = `<b>${jogos}</b>`;
-            div_gols.innerHTML = `<b>${gols}</b>`;
-            div_assistencias.innerHTML = `<b>${assist}</b>`;
-            div_titulos.innerHTML = `<b>${titulos}</b>`;
-
-            if (bola_de_ouro > 7 || (gols > 780 && assist > 299)) {
-                div_mensagem.innerHTML = `${nome}, você e o Pelé são uma LENDA!`;
-            } else if (bola_de_ouro > 4 && bola_de_ouro <= 7 && gols > 499 && assist > 149) {
-                div_mensagem.innerHTML = `${nome}, bem vindo a mesa dos maiores!`;
-            } else if (bola_de_ouro > 4 && bola_de_ouro <= 7 && gols < 499 && assist < 149) {
-                div_mensagem.innerHTML = `${nome}, muitos se orgulharão em tê-lo visto jogar!`;
-            } else if (bola_de_ouro > 0 || (gols > 199 && assist > 49)) {
-                div_mensagem.innerHTML = `${nome} foi diferenciado(a)`;
-            } else if (bola_de_ouro == 0 && gols > 399) {
-                div_mensagem.innerHTML = `${nome} teve uma carreira subestimada`;
-            } else {
-                div_mensagem.innerHTML = `${nome}, bela carreira!`;
-            }
+        if (gols < 300 && assist > 299) {
+            div_mensagem.innerHTML += `O melhor ${posicao}, garçom de qualidade!`;
+        } else if (gols > 300) {
+            div_mensagem.innerHTML += `Você é imã de gol, o melhor ${posicao}!`;
+        } else if (gols < 60 && assist < 40) {
+            div_mensagem.innerHTML += `Participações em gols nem sempre é tudo, você foi mágico(a).`;
+        } else {
+            div_mensagem.innerHTML += `Sabe bem ser ${posicao}.`;
         }
     }
 </script>

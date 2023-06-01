@@ -37,16 +37,27 @@
             <h2>Cadastrar-se</h2>
             <form action="#">
                 <div class="input-group">
-                    <label for="nomeCompleto">Nome*</label>
-                    <input id="input_nome" placeholder="Digite seu nome" required>
-                </div>
-                <div class="input-group">
                     <label for="usuario">Usuário*</label>
                     <input id="input_usuario" placeholder="Digite seu nome de usuário" required>
                 </div>
                 <div class="input-group">
                     <label for="email">E-mail*</label>
                     <input id="input_email" placeholder="Digite seu e-mail" required>
+                </div>
+                <div class="input-group">
+                    <label for="posicao">Posição*</label>
+                    <select id="posicao_futebol" required>
+                        <option value="none">Selecione...</option>
+                        <option value="Goleiro">Goleiro</option>
+                        <option value="Zagueiro">Zagueiro</option>
+                        <option value="Lateral-Esquerdo">Lateral Esquerdo</option>
+                        <option value="Lateral-Direito">Lateral Direito</option>
+                        <option value="Volante">Volante</option>
+                        <option value="Meio-Campista">Meio-Campista</option>
+                        <option value="Ponta-Esquerda">Ponta-Esquerda</option>
+                        <option value="Ponta-Direita">Ponta-Direita</option>
+                        <option value="Atacante">Atacante</option>
+                    </select>
                 </div>
                 <div class="input-group">
                     <label for="senha">Senha*</label>
@@ -68,11 +79,9 @@
 
 </html>
 
-<!-- Usuario: <input type="text" id="input_usuario"> <br>
-Email:  <br>
-Senha: <input type="password" id="input_senha"> <br>
-Confirmar senha: <input type="password" id="input_confirmar_senha"> <br>
-<button onclick="cadastrar()">Cadastrar</button> -->
+<script>
+
+</script>
 
 <script>
     // Lista com imagem dos jogadores
@@ -90,60 +99,93 @@ Confirmar senha: <input type="password" id="input_confirmar_senha"> <br>
         '<iframe id="sofa-player-embed-750" src="https://widgets.sofascore.com/embed/player/750?widgetBackground=Black" style="height:600px!important;max-width:600px!important;width:100%!important;" frameborder="0" scrolling=""></iframe>' // Cristiano Ronaldo
     ];
 
-    
+
     function mudarJogador() {
-    var select = document.querySelector('#jogadores_nominees');
+        var select = document.querySelector('#jogadores_nominees');
 
-    let optionValue = select.options[select.selectedIndex];
-    let value = optionValue.value;
+        let optionValue = select.options[select.selectedIndex];
+        let value = optionValue.value;
 
-    if (value == '1') {
-        div_desempenho.innerHTML = listaJogadores[0];
-    } else if (value == '2') {
-        div_desempenho.innerHTML = listaJogadores[1];
-    } else if (value == '3') {
-        div_desempenho.innerHTML = listaJogadores[2];
-    } else if (value == '4') {
-        div_desempenho.innerHTML = listaJogadores[3];
-    } else if (value == '5') {
-        div_desempenho.innerHTML = listaJogadores[4];
-    } else if (value == '6') {
-        div_desempenho.innerHTML = listaJogadores[5];
-    } else if (value == '7') {
-        div_desempenho.innerHTML = listaJogadores[6];
-    } else if (value == '8') {
-        div_desempenho.innerHTML = listaJogadores[7];
-    } else if (value == '9') {
-        div_desempenho.innerHTML = listaJogadores[8];
-    } else if (value == '10') {
-        div_desempenho.innerHTML = listaJogadores[9];
-    } else if (value == '11') {
-        div_desempenho.innerHTML = listaJogadores[10];
+        if (value == '1') {
+            div_desempenho.innerHTML = listaJogadores[0];
+        } else if (value == '2') {
+            div_desempenho.innerHTML = listaJogadores[1];
+        } else if (value == '3') {
+            div_desempenho.innerHTML = listaJogadores[2];
+        } else if (value == '4') {
+            div_desempenho.innerHTML = listaJogadores[3];
+        } else if (value == '5') {
+            div_desempenho.innerHTML = listaJogadores[4];
+        } else if (value == '6') {
+            div_desempenho.innerHTML = listaJogadores[5];
+        } else if (value == '7') {
+            div_desempenho.innerHTML = listaJogadores[6];
+        } else if (value == '8') {
+            div_desempenho.innerHTML = listaJogadores[7];
+        } else if (value == '9') {
+            div_desempenho.innerHTML = listaJogadores[8];
+        } else if (value == '10') {
+            div_desempenho.innerHTML = listaJogadores[9];
+        } else if (value == '11') {
+            div_desempenho.innerHTML = listaJogadores[10];
+        }
+
+
     }
 
-
-    }
-    
     mudarJogador()
 
-    
+
 </script>
+
+<!-- SweetAlert2 -->
+<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
 <script>
     function cadastrar() {
-        // aguardar();
+        var select = document.querySelector('#posicao_futebol');
+        let optionValue = select.options[select.selectedIndex];
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
-        var nomeVar = input_nome.value;
         var usuarioVar = input_usuario.value;
         var emailVar = input_email.value;
+        var posicaoVar = optionValue.value;
         var senhaVar = input_senha.value;
         var confirmarSenhaVar = input_confirmar_senha.value;
         var jogadorVotadoVar = jogadores_nominees.value;
 
-        if (nomeVar == "" || usuarioVar == "" || emailVar == "" || senhaVar == "" || confirmarSenhaVar == "") {
-            console.log("teste")
+        if (usuarioVar == "" || emailVar == "" || posicaoVar == "none" || senhaVar == "" || confirmarSenhaVar == "") {
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: `Os campos precisam ser preenchidos!`,
+                showConfirmButton: true,
+            });
+        }
+        // else if (senhaVar < 8) {
+        //     Swal.fire({
+        //         position: 'center',
+        //         icon: 'warning',
+        //         title: `Senha muito fraca!`,
+        //         showConfirmButton: true,
+        //     });
+        // }
+        else if (senhaVar != confirmarSenhaVar) {
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: `Senha e confirmar senha estão diferentes!`,
+                showConfirmButton: true,
+            });
+        } else if (emailVar.indexOf('@gmail.com') == -1 && emailVar.indexOf('@sptech.school') == -1) {
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: `E-mail inválido!`,
+                showConfirmButton: true,
+            });
         } else {
             // Enviando o valor da nova input
             fetch("/usuarios/cadastrar", {
@@ -154,9 +196,9 @@ Confirmar senha: <input type="password" id="input_confirmar_senha"> <br>
                 body: JSON.stringify({
                     // crie um atributo que recebe o valor recuperado aqui
                     // Agora vá para o arquivo routes/usuario.js
-                    nomeServer: nomeVar,
                     usuarioServer: usuarioVar,
                     emailServer: emailVar,
+                    posicaoServer: posicaoVar,
                     senhaServer: senhaVar,
                     confirmarSenhaServer: confirmarSenhaVar,
                 })
@@ -177,7 +219,14 @@ Confirmar senha: <input type="password" id="input_confirmar_senha"> <br>
                             })
                         })
                     })
-                    alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+
+                    // Validação
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: `Cadastro realizado com sucesso!`,
+                        time: 1500,
+                    });
 
                     setTimeout(() => {
                         window.location = "login.html";
@@ -186,7 +235,12 @@ Confirmar senha: <input type="password" id="input_confirmar_senha"> <br>
                     // limparFormulario();
                     // finalizarAguardar();
                 } else {
-                    alert("Houve um erro ao tentar realizar o cadastro!");
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: `Erro ao cadastrar-se!`,
+                        showConfirmButton: true,
+                    })
                 }
             }).catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);

@@ -195,7 +195,7 @@ header .navegar li a:hover {
 #crie-sua-carreira .text p {
     display: flex;
     justify-content: center;
-    color: #121212;
+    /* color: #121212; */
     font-family: 'Kanit', sans-serif;
 }
 

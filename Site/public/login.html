@@ -8,25 +8,25 @@
     <title>Bem-vindo(a) de volta!</title>
     <link rel="shortcut icon" href="assets/img/favicon_logo.png" type="image/x-icon">
 
-    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
     <div class="box">
-        <form action="">
-
+        <a href="index.html"><img src="assets/img/ballondor_logo.png"></a>
+        <form action="" class="form-box">
             <div class="input-group">
                 <label for="">Usuário</label>
-                <input id="input_usuario" placeholder="Nickname" required>
+                <input id="input_usuario" placeholder="Nome de usuário" required>
             </div>
             <div class="input-group">
                 <label for="">Senha</label>
                 <input type="password" placeholder="Senha" id="input_senha" required>
             </div>
-            <p>Não tenho uma conta! <a href="cadastro.html">Cadastrar!</a></p>
         </form>
-        <div class="input-group">
+        <div class="input-group2">
             <button onclick="entrar()">Entrar</button>
+            <p>Não tenho uma conta! <a href="cadastro.html">Cadastrar!</a></p>
         </div>
     </div>
 </body>

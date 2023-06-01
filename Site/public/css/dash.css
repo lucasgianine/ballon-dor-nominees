@@ -6,6 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
 }
 
 body{
@@ -354,6 +355,10 @@ body{
 
 .background {
     background-image: url(../assets/img/bg_ballondor.png);
+}
+
+.background2 {
+    background-image: url(../assets/img/bg_modoCarreira.png);
 }
 
 #detalhes {

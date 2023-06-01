@@ -20,18 +20,12 @@
 
 <body>
 
-    <body id="painel">
+    <body id="painel" class="background">
         <div class="div_menu_lateral">
             <a href="../index.html"><img src="../assets/img/ballondor_black_logo.png" class="logo"></a>
             <button onclick="irPainel()">
                 Painel
             </button>
-            <!-- <button onclick="irVotos()">
-                Vote
-            </button> -->
-            <!-- <button onclick="irBattle()">
-                Legend Battle
-            </button> -->
             <button class="pageAtual" onclick="irQuiz()">
                 Quiz
             </button>
@@ -46,24 +40,11 @@
         </div>
         <div class="div_conteiner_conteudo">
             <h2 id="titulo_quiz">Bora jogar!</h2>
-            <p id="texto_quiz">Olá, usuário. Bem vindo ao quiz, aqui você pode se divertir e pontuar 
+            <p id="texto_quiz">Olá, <span id="b_usuario"></span>. Bem vindo ao quiz, aqui você pode se divertir e pontuar 
             nos mais diversos quizes,<br> tendo a oportunidade de estar no ranking entre os melhores jogadores! Bora tentar?</p>
             <p> <br> </p>
-            <p id="texto_quiz"><b class="b_text">Iniciante:</b> Para você que não conhece muito o munda da bola, mas quer um desafio, comece por este.</p>
-            <p id="texto_quiz"><b class="b_text">Intermediário:</b> Se você já se familiariza com o futebol, conhece os jogadores,<br>tente esse desafio!</p>
-            <p id="texto_quiz"><b class="b_text">Experiente:</b> Se você conhece bem o futebol, experiente um desafio com 15 questões<br>te desejo boa sorte!<p>
-
+            
             <div class="tipos_de_quiz">
-                <div id="quiz1">
-                    <a href="../quizIniciante.html"><img src="../assets/img/quiz1_adivinheOTime.png" class="img_quiz"></a>
-                    <p class="b_text">Ballon D'or</p>
-                    <p>Quem deve ganhar?</p>
-                </div>
-                <!-- <div id="quiz2">
-                    <a href="#"><img src="../assets/img/quiz2_adivinheOJogador.png" class="img_quiz"></a>
-                    <p class="b_text">Intermediário</p>
-                    <p>Adivinhe o jogador</p>
-                </div> -->
                 <div id="quiz3">
                     <a href="#"><img src="../assets/img/futBallondor.png" class="img_quiz"></a>
                     <p class="b_text">Quiz</p>
