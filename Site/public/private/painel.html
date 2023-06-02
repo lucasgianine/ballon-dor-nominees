@@ -34,23 +34,25 @@
             </button>
 
             <footer>
+
                 <button class="btnSair" onclick="sair(); return false">Deslogar</button>
                 © Ballon D'or
             </footer>
         </div>
-        <div class="div_conteiner_conteudo">
-            <!-- <div class="box-chart"> -->
-                <div id="ranking">
-                    <p>
-                        <select name="" id="ranking_ballondor">
-                            <option value="mais_votados">Os mais votados</option>
-                            <option value="quiz_ranking">Pontuação dos Usuários</option>
-                        </select>
-                    </p>
-                    <canvas id="chart_votos"></canvas>
-                </div>
-            <!-- </div> -->
 
+        <div class="div_conteiner_conteudo">
+            <div id="perfil">
+                <img id="img_jogador" src="../assets/img/asset_legendteam.PNG">
+                <!-- <canvas id="chart_pontos"></canvas> -->
+                <div id="b_usuario">A</div>
+            </div>
+
+            <div id="ranking">
+                <div class="chart_graficos">
+                    <canvas id="chart_votos"></canvas>
+                    <canvas id="chart_quiz"></canvas>
+                </div>
+            </div>
         </div>
 
 
@@ -58,100 +60,167 @@
 </body>
 
 </html>
+
 <!-- Importando a biblioteca ChartJS: -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- Importando o plugin DataLabels do ChartJS: -->
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-<!-- Importando o back-end do ChartJS: -->
-<script src="../dashboard-cliente/js/dashboardCliente.js"></script>
-
-<!-- Funções de redirecionamento de páginas -->
-<script src="../js/redirecionar.js"></script>
 
 <script>
-    Chart.register(ChartDataLabels); // Registrando o plugin DataLabels
+    // b_usuario.innerHTML = "@" + sessionStorage.USUARIO;
+    // var fkJogador = sessionStorage.getItem("FK_JOGADOR");
 
-    // Gráfico de ranking
-    const data_votos = {
-        labels: ['Vini Jr.', 'Messi', 'Neymar Jr.', 'Mbappé', 'B. Silva', 'De Bruyne', 'Benzema', 'Modric', 'Lautaro'], // Os maiores
-        datasets: [{
-            label: 'Os mais votados',
-            backgroundColor: '#EBD937',
-            borderColor: '#F7DF1E',
-            borderWidth: 1,
-            tension: 0.3, // Curvatura do gráfico
-            data: [13, 12, 10, 7, 7, 6, 4, 4, 2] // Qtd. de títulos
-        }],
-        options: {
-            interaction: {
-                mode: 'index',
-                intersect: false,
-                display: false
-            },
-            layout: {
-                padding: 5
-            },
-            scales: {
-                y: {
-                    beginAtZero: false
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false
+    // if (fkJogador == '1') {
+    //     img_jogador.src = `jogador1`;
+    // } else if (fkJogador == '2') {
+    //     img_jogador.src = `jogador2`;
+    // } else if (fkJogador == '3') {
+    //     img_jogador.src = `jogador3`;
+    // } else if (fkJogador == '4') {
+    //     img_jogador.src = `jogador4`;
+    // } else if (fkJogador == '5') {
+    //     img_jogador.src = `jogador5`;
+    // } else if (fkJogador == '6') {
+    //     img_jogador.src = `jogador6`;
+    // } else if (fkJogador == '7') {
+    //     img_jogador.src = `jogador7`;
+    // } else if (fkJogador == '8') {
+    //     img_jogador.src = `jogador8`;
+    // } else if (fkJogador == '9') {
+    //     img_jogador.src = `jogador9`;
+    // } else if (fkJogador == '10') {
+    //     img_jogador.src = `jogador10`;
+    // } else if (fkJogador == '11') {
+    //     img_jogador.src = `jogador11`;
+    // }
+
+    function obterVotos() {
+        console.log()
+        fetch(`/voto/votos`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+    obterVotos()
+
+    function plotarGrafico(resposta) {
+        Chart.register(ChartDataLabels); // Registrando o plugin DataLabels
+        console.log('Iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels e users
+        let labels = [];
+        let users = [];
+
+        // Criando estrutura para plotar gráfico - dados e pontuacao
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Os mais votados',
+                data: [],
+                fill: false,
+                backgroundColor: ['#EBD937', '#FFF'],
+                borderColor: '#F7DF1E',
+                borderWidth: 1,
+                tension: 0.3 // Curvatura do gráfico
+            }]
+        };
+
+        let pontuacao = {
+            labels: users,
+            datasets: [{
+                label: 'Pontuação',
+                data: [],
+                fill: false,
+                backgroundColor: ['#EBD937', '#FFF'],
+                borderColor: '#F7DF1E',
+                borderWidth: 1,
+                tension: 0.3 // Curvatura do gráfico
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterVotos" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.Jogador);
+            dados.datasets[0].data.push(registro.Votos);
+            users.push(registro.Usuario);
+            pontuacao.datasets[0].data.push(registro.Pontuacao);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Jogadores:');
+        console.log(labels);
+        console.log('Votos:');
+        console.log(dados.datasets);
+        console.log('------------------');
+        console.log('Usuários:');
+        console.log(users);
+        console.log('Pontuação:')
+        console.log(pontuacao.datasets);
+        console.log('----------------------------------------------');
+
+        // Criando estrutura para plotar gráfico - config
+        const config_votos = {
+            type: 'bar',
+            data: dados,
+            options: {
+                layout: {
+                    padding: 5
                 },
-            }
-        }
-    };
-
-    const data_quiz = {
-        labels: ['Lucas', 'Daniel', 'Rafinha', 'Mazzoni', 'Noá', 'Vinicius', 'Jonas', 'Juhrs', 'Lorena'], // As maiores equipes
-        datasets: [{
-            label: 'Os maiores pontuadores',
-            backgroundColor: '#EBD937',
-            borderColor: '#F7DF1E',
-            borderWidth: 1,
-            tension: 0.3, // Curvatura do gráfico
-            data: [80, 60, 50, 40, 30, 20, 20, 10, 10] // Qtd. de títulos por equipe
-        }],
-        options: {
-            interaction: {
-                mode: 'index',
-                intersect: false
-            },
-            layout: {
-                padding: 5
-            },
-            scales: {
-                y: {
-                    beginAtZero: false
+                plugins: {
+                    legend: {
+                        display: true
+                    },
                 }
-            }
-        }
-    };
+        }};
 
+        const config_quiz = {
+            type: 'bar',
+            data: pontuacao,
+            options: {
+                layout: {
+                    padding: 5
+                },
+                plugins: {
+                    legend: {
+                        display: true
+                    },
+                }
+        }};
 
-    const config_votos = {
-        type: 'bar',
-        data: data_votos,
-        options: {}
-    };
-
-    const config_quiz = {
-        type: 'bar',
-        data: data_quiz,
-        options: {}
+        // Adicionando gráfico criado em div na tela
+        const chart_votos = new Chart(
+            document.getElementById('chart_votos'),
+            config_votos
+        );
+        
+        const chart_quiz = new Chart(
+            document.getElementById('chart_quiz'),
+            config_quiz
+        );
+        // const config_pontos_geral = {
+        //     type: 'pie',
+        //     data: data_pontos_geral,
+        //     options: {}
+        // }
     }
 </script>
 
-<script>
-    const chart_votos = new Chart(
-        document.getElementById('chart_votos'),
-        config_votos
-    );
-
-    const chart_quiz = new Chart(
-        document.getElementById('chart_quiz'),
-        config_quiz
-    )
-</script>
+<!-- Funções de redirecionamento de páginas -->
+<script src="../js/redirecionar.js"></script>

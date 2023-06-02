@@ -253,53 +253,21 @@ body{
 
 }
 
-#chart_ranking {
+#ranking {
+    display: flex;
+    justify-content: center;
+    
+}
+.chart_graficos {
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+    border: 1px solid #EBD937;
 
-#ranking {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    padding: 50px;
-    background-image: url(assets/img/bg_boladeouro.png);
-    background-size: 100%;
-}
-
-#ranking p {
-    display: flex;
-    justify-content: center;
-    color: #ECF8E5;
-    font-family: 'Raleway', sans-serif;
-}
-
-#ranking .text h2 {
-    color: #ECF8E5;
-    font-size: 1.3em;
-    display: flex;
-    justify-content: center;
-    line-height: 0.5em;
-    font-weight: 700;
-    font-family: 'Raleway', sans-serif;
-}
-
-#ranking .text .b_color {
-    color: #EBD937;
-    font-family: 'Raleway', sans-serif;
-}
-
-#ranking select {
-    color: #121212;
-    border: 2px solid #EBD937;
-    border-radius: 10px;
-    outline: none;
-    width: 15vw;
-    height: 5vh;
-    font-family: 'Raleway', sans-serif;
-    padding-left: 5px;
+    width: 80vw;
+    height: 35vh;
+    gap: 50px;
 }
 
 /* PAINEL DO USUÁRIO */
@@ -365,4 +333,19 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.div_conteiner_conteudo #perfil {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+#img_jogador {
+    width: 180px;
+    margin-bottom: 10px;
+}
+#b_usuario {
+    margin-bottom: 30px;
 }

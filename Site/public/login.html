@@ -66,10 +66,9 @@
                         console.log(json);
                         console.log(JSON.stringify(json));
 
-                        sessionStorage.EMAIL_USUARIO = json.usuario;
-                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.USUARIO = json.usuario;
                         sessionStorage.ID_USUARIO = json.idUsuario;
-                        sessionStorage.ID_USUARIO = json.email;
+                        sessionStorage.EMAIL_USUARIO = json.email;
 
                         setTimeout(function () {
                             window.location = "private/painel.html";

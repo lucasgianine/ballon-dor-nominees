@@ -276,15 +276,15 @@
     ];
 
     function sortear() {
-        var nome = 'Cebolinha'
-        var posicao = 'Meio-campista';
+        var nome = sessionStorage.USUARIO;
+        var posicao = sessionStorage.POSICAO;
 
         // Sorteando os times dos jogadores
-        var base = parseInt(Math.random() * 27); // Times Brasileiros
-        var profissional = parseInt(Math.random() * 27); // Times Brasileiros
-        var europa = parseInt(Math.random() * 43); // Times europeus
-        var idolo = parseInt(Math.random() * 86); // Times diversos
-        var aposentadoria = parseInt(Math.random() * 86); // Times diversos
+        var base = parseInt(Math.random() * (timesBrasil.length - 1)); // Times Brasileiros
+        var profissional = parseInt(Math.random() * (timesBrasil.length - 1)); // Times Brasileiros
+        var europa = parseInt(Math.random() * (timesEuropa.length - 1)); // Times europeus
+        var idolo = parseInt(Math.random() * (timesEuropa.length - 1)); // Times diversos
+        var aposentadoria = parseInt(Math.random() * (timesEuropa.length - 1)); // Times diversos
 
         var jogos = parseInt(Math.random() * (801) + 100);
         var gols = parseInt(Math.random() * 801);
