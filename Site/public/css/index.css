@@ -178,7 +178,7 @@ header .navegar li a:hover {
 
 /* Aba de "Crie sua carreira" */
 
-#crie-sua-carreira {
+.crie-sua-carreira {
     position: relative;
     width: 100%;
     min-height: 100vh;
@@ -189,28 +189,7 @@ header .navegar li a:hover {
     background-size: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-}
-
-#crie-sua-carreira .text p {
-    display: flex;
     justify-content: center;
-    /* color: #121212; */
-    font-family: 'Kanit', sans-serif;
-}
-
-#crie-sua-carreira .text h2 {
-    color: #EBD937;
-    font-size: 3em;
-    margin-bottom: 10px;
-    line-height: 0.5em;
-    font-weight: 700;
-    font-family: 'Rubik Mono One', sans-serif;
-    text-shadow: 0px 1px 2px #121212;
-}
-
-#crie-sua-carreira .container img {
-    width: 500px;
 }
 
 /* Botão personalizado */
@@ -221,59 +200,55 @@ header .navegar li a:hover {
     width: 100%;
     min-height: 100vh;
     padding: 100px;
-    /* background: #2D2727; */
-    background-image: url(../assets/img/bg_sobre.png);
-    /* background-position: 55%; */
+    background-image: url(../assets/img/fundo_boladeouro.png);
+    /* background-color: #000000; */
     background-size: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.valores {
-    background-color: #EBD937;
-    border: 1px solid #121212;
-    border-radius: 10px;
-    box-shadow: 0px 2px 10px #EBD937;
-    display: flex;
-    justify-content: space-between;
-    font-family: 'Raleway', sans-serif;
-}
-.valores p {
-    text-align: center;
-}
-.valores .container_box {
-    justify-content: center;
-}
-.valores .container_box .boxes {
-    display: flex;
-    justify-content: space-between;
+#valores {
+    position: relative;
     width: 100%;
+    min-height: 100vh;
+    padding: 32px;
+    background-image: url(../assets/img/bg_fifaboladeouro.png);
+    background-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.box {
-    width: 280px;
-    height: 450px;
+#valores .card-box {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin: 10px;
-}
-.box img {
-    width: 170px;
-}
-.box p {
     text-align: center;
+    background-color: #EBD937;
+    padding: 32px 16px;
+    box-shadow: 0px 0px 10px #EBD937;
+    border-radius: 8px;
+    max-height: 250px;
+    height: 250px;
+    width: 100%;
+    margin-left: 32px;
 }
 
+#valores .card-box:first-child {
+    margin-left: 0px;
+}
 
+#valores .card-box .icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 7px;
+}
 
-
-
-
-
-
+#valores .card-box img {
+    width: 100%;
+}
 
 /* Container do ranking (ChartJS) */
 .box-chart {
@@ -298,6 +273,7 @@ header .navegar li a:hover {
     justify-content: center;
     align-items: center;
 }
+
 #chart_quiz {
     box-sizing: border-box;
     display: flex;
@@ -345,4 +321,146 @@ header .navegar li a:hover {
     height: 5vh;
     font-family: 'Raleway', sans-serif;
     padding-left: 5px;
+}
+
+.container-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container-center .text-center {
+    position: relative;
+
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container-center .text-center h2 {
+    color: #EBD937;
+    font-size: 3em;
+    margin-bottom: 10px;
+    line-height: 0.5em;
+    font-weight: 700;
+    font-family: 'Rubik Mono One', sans-serif;
+}
+
+.container-center .text-center p {
+    color: #ECF8E5;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container-center .text-center a {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 25px;
+    background-color: #EBD937;
+    color: #121212;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border: 1px solid #121212;
+    border-radius: 25px;
+    transition: 0.2s ease-in-out;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container-center .text-center a:hover {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 25px;
+    background-color: #121212;
+    color: #EBD937;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border: 1px solid #EBD937;
+    border-radius: 25px;
+    transition: 0.2s ease-in-out;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container .text-sobre {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container .text-sobre h2 {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #EBD937;
+    margin-bottom: 5px;
+}
+
+.container .text-sobre p {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ECF8E5;
+    margin-bottom: 20px;
+
+}
+
+.container .text-sobre img {
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    background-color: #EBD937;
+    color: #121212;
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    flex-direction: column;
+}
+
+footer span{
+    margin-bottom: 5px;
+}
+
+footer a {
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: #EBD937;
+    color: #121212;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border: 1px solid #121212;
+    border-radius: 25px;
+    transition: 0.2s ease-in-out;
+    font-family: 'Montserrat', sans-serif;
+}
+
+footer a:hover {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #121212;
+    color: #EBD937;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border: 1px solid #EBD937;
+    border-radius: 25px;
+    transition: 0.2s ease-in-out;
+    font-family: 'Montserrat', sans-serif;
 }

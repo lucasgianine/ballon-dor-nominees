@@ -36,7 +36,7 @@
                         <a href="index.html#ranking">Ranking</a>
                     </li>
                     <li>
-                        <a href="login.html">Quiz</a>
+                        <a onclick="goQuiz()">Quiz</a>
                     </li>
                     <li class="btn_acessar">
                         <a href="login.html">Entrar</a>
@@ -62,46 +62,59 @@
         </div>
     </section>
 
-    <!-- Section sobre a premiação -->
+    <!-- Sobre a premiação -->
     <section id="sobre">
+        <!-- Criando o container, aonde vamos agrupar os textos, botões e imagens da section principal -->
         <div class="container">
-            <div class="valores">
-                <div class="container_box">
-                    <div class="boxes">
-                        <div class="box">
-                            <img src="assets/imgs/planet-earth_color.png">
-                            <h4>Conteúdo</h4>
-                            <p>O foco no meu site é sobre <b>futebol</b>, quero trazer entretenimento nesse site para
-                                que
-                                fique divertido, aqui você pode: <b>Montar seu time</b> e ver seu entrosamento, postar
-                                mensagens falando sua opinião sobre a Ballon D'or, votar no seu jogador favorito e
-                                participar de Quiz!</p>
-                        </div>
-                        <div class="box">
-                            <img src="assets/imgs/lightbulb_color.png">
-                            <h4>Aprendizado</h4>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores
-                                provident magnam
-                                vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid
-                                accusantium cum dicta
-                                minima.</p>
-                        </div>
-                        <div class="box">
-                            <img src="assets/imgs/growth_color.png">
-                            <h4>Valores</h4>
-                            <p><b>Humildade</b> em ouvir, respeitar e que
-                                ninguém é maior que ninguém. <b>Ousadia</b> para se arriscar em novos desafios e para
-                                não
-                                abaixar a cabeça quando surge uma dificuldade. <b>Lealdade</b> pois os que estão do meu
-                                lado
-                                são importante pra mim e sempre me ajudaram, e sempre faço por eles o que fariam e
-                                fizeram
-                                por mim.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="text-sobre">
+                <h2>Sobre o prêmio</h2> <br>
+                <p>
+                    Bola de Ouro (no original em francês Ballon d'Or) é um prêmio de futebol criado pela revista francesa France Football, sendo entregue de forma independente, entre 1956 e 2009, e novamente a partir de 2016, após fim da parceria com a Federação Internacional de Futebol (FIFA).
+                    <br><br>
+                    O prêmio que veio para parabenizar o melhor jogador de uma temporada, criada em 1956, a Ballon D'or
+                    veio da França, e desde sua criação, vem sendo um dos principais prêmios almejados pelos sonhadores,
+                    assim como eu, Lucas, já quis ser a pessoa que receberia esse prêmio por ser o melhor jogador da
+                    temporada, imagina você ser reconhecido por todo esforço, por todos os anos treinando e buscando
+                    melhorar, e ser recompensado se tornando o melhor jogador do mundo! Estando ao lado de grandes
+                    lendas que já receberam o prêmio!<br><br>
+
+                    Como funciona o Ballon d'Or?<br>
+                    Cada responsável pela votação elabora um ranking de primeiro a quinto lugar, em que o primeiro
+                    recebe seis pontos, o segundo quatro, o terceiro três pontos, o segundo dois e o quinto, um ponto.
+                    Quem terminar com o maior número de pontos recebe o troféu da edição.
+                </p>
+
+                <img src="assets/img/bolaDeOuro_modoCarreira.png">
             </div>
+        </div>
     </section>
+
+        <!-- Sobre meus valores -->
+        <section id="valores">
+            <div class="card-box">
+                <div class="icon">
+                    <img src="assets/img/humildade.png">
+                </div>
+                <h3>Humildade</h3>
+                <span>Reconhecer seus erros é importante para melhorar, aceitar, ouvir e respeitar para evoluir!</span>
+            </div>
+            <div class="card-box">
+                <div class="icon">
+                    <img src="assets/img/esforço.png">
+                </div>
+                <h3>Esforço</h3>
+                <span>Para se superar, para ser o melhor do mundo naquilo que você ama, exige trabalho, exige
+                    esforço!</span>
+            </div>
+            <div class="card-box">
+                <div class="icon">
+                    <img src="assets/img/lealdade.png">
+                </div>
+                <h3>Lealdade</h3>
+                <span>Forte é aquele que defende quem precisa, quem age no coletivo e consegue ajudar o próximo, está
+                    preparado para a próxima etapa.</span>
+            </div>
+        </section>
 
     <!-- Section de apresentação ao "Legend Team" realizado com o Gustavo Gomes (1ADSB) -->
     <!-- <section id="monte-seu-time">
@@ -130,64 +143,61 @@
         </div>
     </section> --> <!-- Item: Desejável -->
 
-    <!-- Section de apresentação ao "Modo Carreira" -->
-    <section id="crie-sua-carreira">
-        <div class="container">
-            <div class="imagem">
-                <img src="assets/img/modoCarreira.png"
-                    style="width: 447px;">
-            </div>
-
-            <div class="text">
-                <h2>MODO CARREIRA</h2> <br>
-                <p>
-                    SIMULE SUA CARREIRA COMO SE VOCÊ FOSSE JOGADOR DE FUTEBOL, VEJA SUAS
-                     ESTATÍSTICAS, OS TIMES EM QUE JOGOU E QUANTAS BOLAS DE OURO VOCÊ CONQUISTOU!<br>
-                </p>
-
-                <p> <br> </p>
-
-                <p>
-                    ESTE MODO É UMA MANEIRA DE DIVERTIR O USUÁRIO E SIMULAR UMA CARREIRA DE FUTEBOL, COMPARTILHE COM SEUS AMIGOS A SUA CARREIRA!
-                </p>
-                <a href="login.html">Logue para simular!</a>
-            </div>
-        </div>
-    </section>
-
     <!-- Section de ranking, mostrando a classificação dos vencedores da BALLON D'OR
     contendo SELECT trazendo dados diferentes -->
     <section id="ranking">
         <div class="text">
             <h2>
-                Escolha como quer visualizar o ranking!
+                <!-- Escolha como quer visualizar o ranking! -->
+                Atualmente os maiores vencedores da BALLON D'OR
             </h2>
 
             <p> <br> </p>
 
-            <p>
-                <select name="" id="ranking_ballondor">
+            <!-- <p>
+                <select id="ranking_ballondor" onchange="mudarGrafico()">
                     <option value="os_maiores">Os maiores vencedores</option>
-                    <option value="as_maiores">As maiores vencedoras</option>
-                    <option value="nacionalidades">Seleções com Ballon D'or</option>
+                    <option value="os_aposentados">Os maiores aposentados</option>
+                    <option value="os_brasileiros">Os maiores Brasileiros</option>
                 </select>
-            </p>
+            </p> -->
 
             <p> <br> </p>
         </div>
 
         <div class="box-chart">
-            <canvas id="chart_maiores"></canvas>
+            <canvas id="chart_ranking"></canvas>
         </div>
     </section>
 
-    <section id="valores">
-
-    </section>
-
-    <!-- <footer>
+        <!-- Section de apresentação ao "Modo Carreira" -->
+        <section class="crie-sua-carreira">
+            <div class="container-center">
+                <div class="text-center">
+                    <h2>DIVIRTA-SE</h2> <br>
+                    <p>
+                        VEJA SUAS ESTATÍSTICAS E OS JOGADORES MAIS VOTADOS EM TEMPO REAL!
+                    </p>
+    
+                    <p> <br> </p>
+    
+                    <p>
+                        SIMULE SUA CARREIRA COMO SE FOSSE UM JOGADOR DE FUTEBOL, E SE TORNE O MAIOR DA HISTÓRIA!<br>
+                    </p>
+    
+                    <p> <br> </p>
+    
+                    <p>
+                        TEMOS UM DESAFIO DE QUIZ, FAÇA-O E VEJA O SEU NOME SUBIR NO RANKING!
+                    </p>
+                    <a href="login.html">Logue para simular!</a>
+                </div>
+            </div>
+        </section>
+    <footer>
         <span>Realizado por Lucas dos Santos - 1/2023 &copy;</span>
-    </footer> -->
+        <a href="index.html#home">^ Subir ^</a>
+    </footer>
 
 </body>
 
@@ -199,85 +209,216 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 <script>
 
-    
     Chart.register(ChartDataLabels); // Registrando o plugin DataLabels
 
+    function obterOsMaiores() {
+        console.log()
+        fetch(`/medidas/obterOsMaiores`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
 
-    // Gráfico de ranking
-    const data_maiores = {
-        labels: ['Pelé', 'Messi', 'Cristiano', 'Crujiff', 'Platini', 'van Basten', 'Di Stéfano', 'Beckenbauer', 'Keegan'], // Os maiores
-        datasets: [{
-            label: 'Os maiores vencedores',
-            backgroundColor: '#EBD937',
-            borderColor: '#F7DF1E',
-            borderWidth: 1,
-            tension: 0.3, // Curvatura do gráfico
-            data: [7, 7, 5, 3, 3, 3, 2, 2, 2] // Qtd. de títulos
-        }],
-        options: {
-            interaction: {
-                mode: 'index',
-                intersect: false
-            },
-            layout: {
-                padding: 5
-            },
-            scales: {
-                y: {
-                    beginAtZero: false
-                }
+                    plotarMaiores(resposta);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
             }
-        }
-    };
-
-    const data_equipe = {
-        labels: ['Barcelona', 'Real Madrid', 'Juventus', 'Milan', 'Bayern de Mun.', 'Man. United', 'Dín. de Kiev', 'Internazionale', 'Hamburgo'], // As maiores equipes
-        datasets: [{
-            label: 'Os maiores vencedores',
-            backgroundColor: '#EBD937',
-            borderColor: '#F7DF1E',
-            borderWidth: 1,
-            tension: 0.3, // Curvatura do gráfico
-            data: [12, 12, 8, 8, 5, 4, 2, 2, 2] // Qtd. de títulos por equipe
-        }],
-        options: {
-            interaction: {
-                mode: 'index',
-                intersect: false
-            },
-            layout: {
-                padding: 5
-            },
-            scales: {
-                y: {
-                    beginAtZero: false
-                }
-            }
-        }
-    };
-
-
-    const config_maiores = {
-        type: 'bar',
-        data: data_maiores,
-        options: {}
-    };
-
-    const config_equipe = {
-        type: 'bar',
-        data: data_equipe,
-        options: {}
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
     }
-</script>
 
-<script>
-    const chart_maiores = new Chart(
-        document.getElementById('chart_maiores'),
-        config_maiores
-    );
+    obterOsMaiores();
 
-    const chart_equipe = new Chart(
-        document.getElementById('chart_equipe'),
-        config_equipe
-    )
+    function plotarMaiores(resposta) {
+        console.log('Iniciando plotagem do gráfico dos maiores...');
+
+        let labels = [];
+
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Os maiores vencedores',
+                data: [],
+                fill: false,
+                backgroundColor: ['#EBD937', '#FFF7D4', '#FFD95A', '#FFD93D', '#F2CD5C', '#FFFBAC', '#FFFBAC', '#FFE15D'],
+                borderColor: '#4C3D3D',
+                borderWidth: 1,
+                tension: 0.3 // Curvatura do gráfico
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterVotos" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.JogadorFut);
+            dados.datasets[0].data.push(registro.BallonDor);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Jogadores:');
+        console.log(labels);
+        console.log('Votos:');
+        console.log(dados.datasets);
+        console.log('----------------------------------------------');
+
+        const config_maiores = {
+            type: 'bar',
+            data: dados,
+            options: {}
+        };
+
+        const chart_ranking = new Chart(
+            document.getElementById('chart_ranking'),
+            config_maiores
+        );
+    }
+
+    // function obterOsAposentados() {
+    //     console.log()
+    //     fetch(`/medidas/obterOsAposentados`, { cache: 'no-store' }).then(function (response) {
+    //         if (response.ok) {
+    //             response.json().then(function (resposta) {
+    //                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+    //                 resposta.reverse();
+
+    //                 plotarAposentados(resposta);
+    //             });
+    //         } else {
+    //             console.error('Nenhum dado encontrado ou erro na API');
+    //         }
+    //     })
+    //         .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    //         });
+    // }
+
+    // function plotarAposentados(resposta) {
+    //     console.log('Iniciando plotagem do gráfico dos aposentados...');
+
+    //     let labels = [];
+
+    //     let dados = {
+    //         labels: labels,
+    //         datasets: [{
+    //             label: 'Os maiores vencedores',
+    //             data: [],
+    //             fill: false,
+    //             backgroundColor: ['#EBD937', '#FFF7D4', '#FFD95A', '#FFD93D', '#F2CD5C', '#FFFBAC', '#FFFBAC', '#FFE15D'],
+    //             borderColor: '#4C3D3D',
+    //             borderWidth: 1,
+    //             tension: 0.3 // Curvatura do gráfico
+    //         }]
+    //     };
+
+    //     console.log('----------------------------------------------')
+    //     console.log('Estes dados foram recebidos pela funcao "obterVotos" e passados para "plotarGrafico":')
+    //     console.log(resposta)
+
+    //     for (i = 0; i < resposta.length; i++) {
+    //         var registro = resposta[i];
+    //         labels.push(registro.NomeJogador);
+    //         dados.datasets[0].data.push(registro.BallonDor);
+    //     }
+
+    //     console.log('----------------------------------------------')
+    //     console.log('O gráfico será plotado com os respectivos valores:')
+    //     console.log('Jogadores:');
+    //     console.log(labels);
+    //     console.log('Votos:');
+    //     console.log(dados.datasets);
+    //     console.log('----------------------------------------------');
+
+    //     const config_aposentados = {
+    //         type: 'bar',
+    //         data: dados,
+    //         options: {}
+    //     };
+
+    //     const chart_aposentados = new Chart(
+    //         document.getElementById('chart_aposentados'),
+    //         config_aposentados
+    //     );
+    // }
+
+    // function obterOsBrasileiros() {
+    //     console.log()
+    //     fetch(`/medidas/obterOsBrasileiros`, { cache: 'no-store' }).then(function (response) {
+    //         if (response.ok) {
+    //             response.json().then(function (resposta) {
+    //                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+    //                 resposta.reverse();
+
+    //                 plotarBrasileiros(resposta);
+    //             });
+    //         } else {
+    //             console.error('Nenhum dado encontrado ou erro na API');
+    //         }
+    //     })
+    //         .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    //         });
+    // }
+
+    // function plotarBrasileiros(resposta) {
+    //     console.log('Iniciando plotagem do gráfico dos brasileiros...');
+
+    //     let labels = [];
+
+    //     let dados = {
+    //         labels: labels,
+    //         datasets: [{
+    //             label: 'Os maiores',
+    //             data: [],
+    //             fill: false,
+    //             backgroundColor: ['#EBD937', '#FFF7D4', '#FFD95A', '#FFD93D', '#F2CD5C', '#FFFBAC', '#FFFBAC', '#FFE15D'],
+    //             borderColor: '#4C3D3D',
+    //             borderWidth: 1,
+    //             tension: 0.3 // Curvatura do gráfico
+    //         }]
+    //     };
+
+    //     console.log('----------------------------------------------')
+    //     console.log('Estes dados foram recebidos pela funcao "obterVotos" e passados para "plotarGrafico":')
+    //     console.log(resposta)
+
+    //     for (i = 0; i < resposta.length; i++) {
+    //         var registro = resposta[i];
+    //         labels.push(registro.JogadorNome);
+    //         dados.datasets[0].data.push(registro.BallonDor);
+    //     }
+
+    //     console.log('----------------------------------------------')
+    //     console.log('O gráfico será plotado com os respectivos valores:')
+    //     console.log('Jogadores:');
+    //     console.log(labels);
+    //     console.log('Votos:');
+    //     console.log(dados.datasets);
+    //     console.log('----------------------------------------------');
+
+    //     const config_br = {
+    //         type: 'bar',
+    //         data: dados,
+    //         options: {}
+    //     };
+
+    //     const chart_brasileiros = new Chart(
+    //         document.getElementById('chart_brasileiros'),
+    //         config_br
+    //     );
+    // }
+
+    function goQuiz() {
+        if (sessionStorage.USUARIO != undefined) {
+            window.location.href = "private/painel.html";
+        } else {
+            window.location.href = "login.html";
+        }
+    }
 </script>

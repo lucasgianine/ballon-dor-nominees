@@ -33,17 +33,23 @@
 
 </html>
 
+<!-- SweetAlert2 -->
+<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
 <script>
     function entrar() {
-
 
         var usuarioVar = input_usuario.value;
         var senhaVar = input_senha.value;
 
         if (usuarioVar == "" || senhaVar == "") {
-            // cardErro.style.display = "block"
-            console.log("teste")
-            // finalizarAguardar();
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: `Os campos precisam ser preenchidos!`,
+                showConfirmButton: true,
+            });
             return false;
         }
         else {
@@ -66,9 +72,19 @@
                         console.log(json);
                         console.log(JSON.stringify(json));
 
-                        sessionStorage.USUARIO = json.usuario;
+                        // Validação
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: `Olá ${usuarioVar}, bem vindo(a) de volta!`,
+                            time: 1500
+                        });
+
+                        sessionStorage.USUARIO = json.username;
                         sessionStorage.ID_USUARIO = json.idUsuario;
                         sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.POSICAO = json.posicao;
+                        sessionStorage.FK_JOGADOR = json.fkJogador;
 
                         setTimeout(function () {
                             window.location = "private/painel.html";
@@ -78,7 +94,12 @@
 
                 } else {
 
-                    // swal("Ops", "Usuário e/ou senha inválido(s)", "error")
+                    Swal.fire({
+                            position: 'center',
+                            icon: 'warning',
+                            title: `Usuário e/ou senha incorreto!`,
+                            showConfirmButton: true,
+                        });
 
                     resposta.text().then(texto => {
                         console.error(texto);

@@ -3,12 +3,16 @@ var router = express.Router();
 
 var medidaController = require("../controllers/medidaController");
 
-router.get("/ultimas/:idVoto", function (req, res) {
-    medidaController.buscarUltimasMedidas(req, res);
+router.get("/obterOsMaiores", function (req, res) {
+    medidaController.obterOsMaiores(req, res);
 });
 
-router.get("/tempo-real/:idVoto", function (req, res) {
-    medidaController.buscarMedidasEmTempoReal(req, res);
-})
+router.get("/obterOsAposentados", function (req, res) {
+    medidaController.obterOsAposentados(req, res);
+});
+
+router.get("/obterOsBrasileiros", function (req, res) {
+    medidaController.obterOsBrasileiros(req, res);
+});
 
 module.exports = router;

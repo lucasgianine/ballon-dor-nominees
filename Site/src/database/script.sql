@@ -1,23 +1,8 @@
 -- Criando e usando o banco de dados do projeto individual
-CREATE DATABASE if not exists projeto_individual;
-USE projeto_individual;
+CREATE DATABASE if not exists ballonDor;
+USE ballonDor;
 
 -- Criando as tabelas necessárias
--- Tabela de usuário
-CREATE TABLE usuario (
-idUsuario INT PRIMARY KEY AUTO_INCREMENT,
-nome VARCHAR(80) NOT NULL,
-username VARCHAR(40) NOT NULL,
-email VARCHAR(100) NOT NULL,
-senha VARCHAR(50) NOT NULL,
-confirmarSenha VARCHAR(50) NOT NULL
-);
-
-SELECT * FROM usuario;
-select * from votacao;
-
-SELECT usuario.nome, voto.fkJogador, jogador.apelido FROM usuario JOIN votacao voto ON idUsuario = fkUsuario
-JOIN jogadores jogador ON idJogador = fkJogador;
 -- Tabela de jogadores(as)
 CREATE TABLE jogadores (
 idJogador INT PRIMARY KEY AUTO_INCREMENT,
@@ -30,6 +15,51 @@ categoria CHAR(1) NOT NULL CONSTRAINT chkCategoria CHECK(categoria IN('M', 'F'))
 carreira CHAR(4) NOT NULL CONSTRAINT chkCarreira CHECK(carreira IN('ATIV', 'APOS')) COMMENT 'ATIV para jogador em atividade, APOS para jogador aposentado',
 bolasDeOuro INT COMMENT 'Quantidade de bola de ouro que o jogador(a) venceu!'
 );
+
+-- Tabela de usuário
+CREATE TABLE usuario (
+idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+username VARCHAR(40) NOT NULL,
+email VARCHAR(100) NOT NULL,
+posicao VARCHAR(16) NOT NULL,
+senha VARCHAR(50) NOT NULL,
+fkJogador INT,
+	FOREIGN KEY (fkJogador) REFERENCES jogadores(idJogador)
+);
+
+-- Adicionando usuários para POPULAR a tabela
+INSERT INTO usuario VALUES
+	(null, 'Lucas', 'lucas.esilva@sptech.school', 'Ponta-Esquerda', '#neymarjr123', 2),
+	(null, 'Ester', 'ester@gmail.com', 'Meio-Campista', '#loveLusca', 1),
+	(null, 'GustavoPrado', 'g.prado@gmail.com', 'Ponta-Direita', '#marinavolta', 4),
+	(null, 'Dwuzin', 'eduramayr@gmail.com', 'Volante', '#Dwuzinn', 3),
+	(null, 'Pedro', 'pedro.oliveira@sptech.school', 'Meio-Campista', '#algoritmos123', 3),
+	(null, 'Marccelo', 'marccelo@sptech.school', 'Zagueiro', '#div_quadrado', 4),
+	(null, 'Jhonny', 'jhonny@gmail.com', 'Zagueiro', '#bodybuilder', 1),
+	(null, 'Noir', 'noa.miglio@sptech.school', 'Lateral-Direito', '#airaNoSpotify', 5),
+	(null, 'Mazzoni', 'murilo.mazzoni@sptech.school', 'Atacante', '#megatronFut', 3),
+	(null, 'enzin', 'enzo@gmail.com', 'Atacante', '2207enzo', 4),
+	(null, 'nicolau', 'nicolau@gmail.com', 'Volante', '12345678', 10),
+	(null, 'Vinicius-23', 'vinicius@gmail.com', 'Meio-Campista', '87654321', 3),
+	(null, 'NayNay', 'nayra.belarmino@sptech.school', 'Atacante', '12345678', 7),
+	(null, 'EleRiu', 'gustavotorres@gmail.com', 'Atacante', '12345678', 6),
+	(null, 'Duartizin_', 'joaosilvaduartevictor@gmail.com', 'Zagueiro', '#minecraft2', 8),
+	(null, 'Juhrsin', 'juhrsin@gmail.com', 'Atacante', '290105juhrs', 1),
+	(null, 'g0mesz_', 'caiquegomes@gmail.com', 'Lateral-Esquerdo', '12345678', 3),
+	(null, 'Joninhas', 'jonas@gmail.com', 'Volante', '#majoninhas', 4),
+	(null, 'Dyelzin', 'adyel@gmail.com', 'Ponta-Esquerda', '#vivaamusica', 2),
+	(null, 'Guto', 'shinayderguto@gmail.com', 'Goleiro', '#goooooool', 4),
+	(null, 'jotinha', 'jota@gmail.com', 'Goleiro', '#vamosJogar', 3),
+	(null, 'rafazerakk', 'rafinhas@gmail.com', 'Zagueiro', '#editarehbom', 2),
+	(null, 'Kath', 'katherinne@gmail.com', 'Ponta-Direita', '#1234567', 1),
+	(null, 'Abraao', 'abraaozin@gmail.com', 'Lateral-Direito', '#29anosnaoeh30', 2),
+	(null, 'Hengler', 'henglxr@gmail.com', 'Atacante', '12345678', 2),
+	(null, 'juliarufino', 'juliarufino@hotmail.com', 'Atacante', '#cuphead123', 3),
+	(null, 'jaum', 'jaumdacarol@gmail.com', 'Meio-Campista', '#coraline', 3),
+	(null, 'CoraLine', 'lineedits@gmail.com', 'Volante', '#lineEditions', 2),
+	(null, 'Theus', 'theus@gmail.com', 'Ponta-Esquerda', '#minecraft', 1),
+	(null, 'Garrafinha', 'ga_rafinha@gmail.com', 'Zagueiro', '#garrafinha', 9),
+	(null, 'icaro', 'icarai@gmail.com', 'Atacante', '#omelhordomundo', 11);
 
 -- Inserindo dados dos jogadores (masculinos)
 INSERT INTO jogadores VALUES
@@ -49,7 +79,8 @@ INSERT INTO jogadores VALUES
 	(null, 'Karim', 'Benzema', 'Benzema', 'Real Madrid', 'FRA', 'M', 'ATIV', 1),
 	(null, 'Luka', 'Modric', 'Modric', 'Real Madrid', 'CRO', 'M', 'ATIV', 1),
 	(null, 'Robert', 'Lewandowski', 'Lewandowski', 'Manchester City', 'POL', 'M', 'ATIV', 0),
-	(null, 'Raphael', 'Veiga', 'Veiga', 'Palmeiras', 'BRA', 'M', 'ATIV', 0);
+	(null, 'Raphael', 'Veiga', 'Veiga', 'Palmeiras', 'BRA', 'M', 'ATIV', 0),
+	(null, 'Marta', 'Silva', 'Marta', 'Orlando Pride', 'BRA', 'F', 'ATIV', 5);
     
 INSERT INTO jogadores VALUES
 	-- Jogadores brasileiros aposentados
@@ -95,9 +126,56 @@ INSERT INTO jogadores VALUES
 	(null, 'Lev', 'Yashin', 'Yashin', null, 'CHI', 'M', 'APOS', 1),
 	(null, 'Josef', 'Masopust', 'Masopust', null, 'CHE', 'M', 'APOS', 1),
 	(null, 'Omar', 'Sívori', 'Sívori', null, 'ARG', 'M', 'APOS', 1),
+    
 	(null, 'Luis', 'Suarez', 'Suaréz', null, 'ESP', 'M', 'APOS', 1),
 	(null, 'Stanley', 'Matthews', 'Matthews', null, 'ING', 'M', 'APOS', 1);
-    
+
+-- Criando a tabela QUIZ
+CREATE TABLE quiz (
+idQuiz INT PRIMARY KEY AUTO_INCREMENT,
+pontuacao INT,
+dtJogo DATETIME,
+fkUsuario INT,
+	FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
+);
+
+-- Criando a tabela associativa - VOTAÇÃO (Usuario + Jogadores(as))
+-- CREATE TABLE votacao (
+-- idVoto INT PRIMARY KEY AUTO_INCREMENT,
+-- fkUsuario INT,
+-- 	FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
+-- fkJogador INT,
+-- 	FOREIGN KEY (fkJogador) REFERENCES jogadores(idJogador),
+-- dtVoto DATETIME NOT NULL
+-- );
+
+-- Criando a tabela associativa - RESULTADO (Usuario + Quiz)
+-- CREATE TABLE resultado (
+-- idResultado INT PRIMARY KEY AUTO_INCREMENT,
+-- fkUsuario INT,
+-- 	FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
+-- fkQuiz INT,
+-- 	FOREIGN KEY (fkQuiz) REFERENCES quiz(idQuiz),
+-- pontuacao INT NOT NULL,
+-- dtResultado DATETIME NOT NULL
+-- );
+
+
+-- SELECTS:
+
+
+-- Pegando a quantidade de votos (ANTIGO)
+-- SELECT count(votacao.fkJogador) as Votos, jogadores.apelido as Jogador FROM VOTACAO
+-- 	JOIN jogadores ON jogadores.idJogador = votacao.fkJogador
+-- 		GROUP BY votacao.fkJogador ORDER BY Votos DESC LIMIT 9;
+
+-- SELECT * FROM VOTACAO;
+
+-- Pegando a quantidade de votos (NOVO)
+SELECT count(usuario.fkJogador) as Votos, jogadores.apelido as Jogador FROM usuario
+	JOIN jogadores ON jogadores.idJogador = usuario.fkJogador
+		GROUP BY usuario.fkJogador ORDER BY Votos DESC LIMIT 9;
+
 -- Exibindo a soma das bolas de ouro dos jogadores brasileiros
 SELECT SUM(bolasDeOuro) FROM jogadores WHERE nacionalidade = 'BRA';
 
@@ -111,10 +189,12 @@ SELECT SUM(bolasDeOuro) FROM jogadores WHERE nacionalidade = 'HOL';
 SELECT SUM(bolasDeOuro) FROM jogadores WHERE nacionalidade = 'POR';
 
 -- Exibindo os jogadores que tenham bolas de ouro que estão em atividade
-SELECT apelido, bolasDeOuro FROM jogadores WHERE bolasDeOuro > 0 AND carreira = 'ATIV' ORDER BY bolasDeOuro DESC;
+SELECT apelido, bolasDeOuro FROM jogadores WHERE bolasDeOuro > 0 AND carreira = 'ATIV'
+	ORDER BY bolasDeOuro DESC;
 
 -- Exibindo os jogadores que tenham bolas de ouro que estão aposentados
-SELECT apelido, bolasDeOuro FROM jogadores WHERE bolasDeOuro > 0 AND carreira = 'APOS' ORDER BY bolasDeOuro DESC;
+SELECT apelido, bolasDeOuro FROM jogadores WHERE bolasDeOuro > 0 AND carreira = 'APOS'
+	ORDER BY bolasDeOuro DESC;
 
 -- Teste:
 SELECT apelido 'Jogador', bolasDeOuro 'Quantidade de Bolas de Ouro'
@@ -130,37 +210,10 @@ FROM jogadores
 			ORDER BY bolasDeOuro DESC
 				LIMIT 9;
 
--- Criando a tabela QUIZ
-CREATE TABLE quiz (
-idQuiz INT PRIMARY KEY,
-dificuldade CHAR(5) NOT NULL CONSTRAINT chkTipoQuiz CHECK(dificuldade IN('INICI', 'INTER', 'EXPER')) COMMENT 'Três tipos de dificuldade do quiz',
-descricao VARCHAR(100) NOT NULL,
-pontMax INT NOT NULL
-);
+-- Pegando a soma de pontuações de um usuário específico
+SELECT SUM(pontuacao) FROM quiz WHERE fkUsuario = 1;
 
--- Inserindo apenas 3 únicos dados: Tipos de quizes
-INSERT INTO quiz VALUES
-	(1, 'INICI', 'Para você que não conhece muito o munda da bola, mas quer um desafio, comece por este.', 50),
-	(2, 'INTER', 'Se você já se familiariza com o futebol, conhece os jogadores, tente esse desafio!', 100),
-	(3, 'EXPER', 'Se você conhece bem o futebol, experiente um desafio com 15 questões te desejo boa sorte!', 150);
-
--- Criando a tabela associativa - VOTAÇÃO (Usuario + Jogadores(as))
-CREATE TABLE votacao (
-idVoto INT PRIMARY KEY AUTO_INCREMENT,
-fkUsuario INT,
-	FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
-fkJogador INT,
-	FOREIGN KEY (fkJogador) REFERENCES jogadores(idJogador),
-dtVoto DATETIME NOT NULL
-);
-
--- Criando a tabela associativa - RESULTADO (Usuario + Quiz)
-CREATE TABLE resultado (
-idResultado INT PRIMARY KEY AUTO_INCREMENT,
-fkUsuario INT,
-	FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
-fkQuiz INT,
-	FOREIGN KEY (fkQuiz) REFERENCES quiz(idQuiz),
-pontuacao INT NOT NULL,
-dtResultado DATETIME NOT NULL
-);
+-- Pegando a soma de pontuações de cada usuário
+SELECT SUM(quiz.pontuacao) as Pontos, usuario.username as Membro FROM quiz
+	JOIN usuario ON usuario.idUsuario = quiz.fkUsuario GROUP BY quiz.fkUsuario
+		ORDER BY Pontos DESC LIMIT 8;

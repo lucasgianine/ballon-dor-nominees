@@ -34,17 +34,18 @@
             </button>
 
             <footer>
-
-                <button class="btnSair" onclick="sair(); return false">Deslogar</button>
+                <button class="btnSair" onclick="sair()">Deslogar</button>
                 © Ballon D'or
             </footer>
         </div>
 
         <div class="div_conteiner_conteudo">
             <div id="perfil">
-                <img id="img_jogador" src="../assets/img/asset_legendteam.PNG">
-                <!-- <canvas id="chart_pontos"></canvas> -->
-                <div id="b_usuario">A</div>
+                <img id="img_jogador" src="">
+                <div id="b_usuario"></div>
+                <div id="b_email"></div>
+                <div id="b_posicao"></div>
+                <div id="alterar_dados"><a href="alterarDados.html">Alterar dados</a></div>
             </div>
 
             <div id="ranking">
@@ -65,34 +66,40 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- Importando o plugin DataLabels do ChartJS: -->
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+<!-- SweetAlert2 -->
+<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
 <script>
-    // b_usuario.innerHTML = "@" + sessionStorage.USUARIO;
-    // var fkJogador = sessionStorage.getItem("FK_JOGADOR");
+    b_usuario.innerHTML = "@" + sessionStorage.USUARIO;
+    b_email.innerHTML = sessionStorage.EMAIL_USUARIO;
+    b_posicao.innerHTML = sessionStorage.POSICAO;
 
-    // if (fkJogador == '1') {
-    //     img_jogador.src = `jogador1`;
-    // } else if (fkJogador == '2') {
-    //     img_jogador.src = `jogador2`;
-    // } else if (fkJogador == '3') {
-    //     img_jogador.src = `jogador3`;
-    // } else if (fkJogador == '4') {
-    //     img_jogador.src = `jogador4`;
-    // } else if (fkJogador == '5') {
-    //     img_jogador.src = `jogador5`;
-    // } else if (fkJogador == '6') {
-    //     img_jogador.src = `jogador6`;
-    // } else if (fkJogador == '7') {
-    //     img_jogador.src = `jogador7`;
-    // } else if (fkJogador == '8') {
-    //     img_jogador.src = `jogador8`;
-    // } else if (fkJogador == '9') {
-    //     img_jogador.src = `jogador9`;
-    // } else if (fkJogador == '10') {
-    //     img_jogador.src = `jogador10`;
-    // } else if (fkJogador == '11') {
-    //     img_jogador.src = `jogador11`;
-    // }
+    var fkJogador = sessionStorage.FK_JOGADOR;
+
+    if (fkJogador == '1') {
+        img_jogador.src = "../assets/img/jogador1.png";
+    } else if (fkJogador == '2') {
+        img_jogador.src = "../assets/img/jogador2.PNG";
+    } else if (fkJogador == '3') {
+        img_jogador.src = "../assets/img/jogador3.png";
+    } else if (fkJogador == '4') {
+        img_jogador.src = "../assets/img/jogador4.png";
+    } else if (fkJogador == '5') {
+        img_jogador.src = "../assets/img/jogador5.png";
+    } else if (fkJogador == '6') {
+        img_jogador.src = "../assets/img/jogador6.png";
+    } else if (fkJogador == '7') {
+        img_jogador.src = "../assets/img/jogador7.png";
+    } else if (fkJogador == '8') {
+        img_jogador.src = "../assets/img/jogador8.png";
+    } else if (fkJogador == '9') {
+        img_jogador.src = "../assets/img/jogador9.png";
+    } else if (fkJogador == '10') {
+        img_jogador.src = "../assets/img/jogador10.png";
+    } else if (fkJogador == '11') {
+        img_jogador.src = "../assets/img/jogador11.png";
+    }
 
     function obterVotos() {
         console.log()
@@ -112,38 +119,26 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     }
-    obterVotos()
+    obterVotos();
+
+
+    Chart.register(ChartDataLabels); // Registrando o plugin DataLabels
 
     function plotarGrafico(resposta) {
-        Chart.register(ChartDataLabels); // Registrando o plugin DataLabels
         console.log('Iniciando plotagem do gráfico...');
 
-        // Criando estrutura para plotar gráfico - labels e users
+        // Criando estrutura para plotar gráfico - labels
         let labels = [];
-        let users = [];
 
-        // Criando estrutura para plotar gráfico - dados e pontuacao
+        // Criando estrutura para plotar gráfico - dados
         let dados = {
             labels: labels,
             datasets: [{
                 label: 'Os mais votados',
                 data: [],
                 fill: false,
-                backgroundColor: ['#EBD937', '#FFF'],
-                borderColor: '#F7DF1E',
-                borderWidth: 1,
-                tension: 0.3 // Curvatura do gráfico
-            }]
-        };
-
-        let pontuacao = {
-            labels: users,
-            datasets: [{
-                label: 'Pontuação',
-                data: [],
-                fill: false,
-                backgroundColor: ['#EBD937', '#FFF'],
-                borderColor: '#F7DF1E',
+                backgroundColor: ['#EBD937', '#FFF7D4', '#FFD95A', '#FFD93D', '#F2CD5C', '#FFFBAC', '#FFFBAC', '#FFE15D'],
+                borderColor: '#4C3D3D',
                 borderWidth: 1,
                 tension: 0.3 // Curvatura do gráfico
             }]
@@ -158,8 +153,6 @@
             var registro = resposta[i];
             labels.push(registro.Jogador);
             dados.datasets[0].data.push(registro.Votos);
-            users.push(registro.Usuario);
-            pontuacao.datasets[0].data.push(registro.Pontuacao);
         }
 
         console.log('----------------------------------------------')
@@ -168,11 +161,6 @@
         console.log(labels);
         console.log('Votos:');
         console.log(dados.datasets);
-        console.log('------------------');
-        console.log('Usuários:');
-        console.log(users);
-        console.log('Pontuação:')
-        console.log(pontuacao.datasets);
         console.log('----------------------------------------------');
 
         // Criando estrutura para plotar gráfico - config
@@ -188,7 +176,71 @@
                         display: true
                     },
                 }
-        }};
+            }
+        };
+
+        // Adicionando gráfico criado em div na tela
+        const chart_votos = new Chart(
+            document.getElementById('chart_votos'),
+            config_votos
+        );
+    }
+
+    function obterPontos() {
+        console.log()
+        fetch(`/usuarios/obterPontos`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    obterPontuacao(resposta);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+    obterPontos();
+
+    function obterPontuacao(resposta) {
+        console.log('Iniciando plotagem do gráfico de pontuação...');
+
+        let users = [];
+
+        let pontuacao = {
+            labels: users,
+            datasets: [{
+                label: 'Pontuação',
+                data: [],
+                fill: false,
+                backgroundColor: ['#EBD937', '#FFF7D4', '#FFD95A', '#FFD93D', '#F2CD5C', '#FFFBAC', '#FFFBAC', '#FFE15D'],
+                borderColor: '#4C3D3D',
+                borderWidth: 1,
+                tension: 0.3 // Curvatura do gráfico
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterVotos" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            users.push(registro.Membro);
+            pontuacao.datasets[0].data.push(registro.Pontos);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Usuários:');
+        console.log(users);
+        console.log('Pontuação:')
+        console.log(pontuacao.datasets);
+        console.log('----------------------------------------------');
 
         const config_quiz = {
             type: 'bar',
@@ -202,23 +254,13 @@
                         display: true
                     },
                 }
-        }};
+            }
+        };
 
-        // Adicionando gráfico criado em div na tela
-        const chart_votos = new Chart(
-            document.getElementById('chart_votos'),
-            config_votos
-        );
-        
         const chart_quiz = new Chart(
             document.getElementById('chart_quiz'),
             config_quiz
         );
-        // const config_pontos_geral = {
-        //     type: 'pie',
-        //     data: data_pontos_geral,
-        //     options: {}
-        // }
     }
 </script>
 

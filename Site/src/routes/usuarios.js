@@ -20,4 +20,16 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+router.post("/obterPlacar", function (req, res) {
+    usuarioController.obterPlacar(req, res);
+});
+
+router.get("/obterPontos", function (req, res) {
+    usuarioController.obterPontos(req, res);
+});
+
+router.get("/obterTotal", function (req, res) {
+    usuarioController.obterTotal(req, res);
+});
+
 module.exports = router;

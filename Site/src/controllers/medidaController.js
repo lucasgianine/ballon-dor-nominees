@@ -1,14 +1,8 @@
 var medidaModel = require("../models/medidaModel");
 
-function buscarUltimasMedidas(req, res) {
+function obterOsMaiores(req, res) {
 
-    const limite_linhas = 7;
-
-    var idVoto = req.params.idVoto;
-
-    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
-
-    medidaModel.buscarUltimasMedidas(idVoto, limite_linhas).then(function (resultado) {
+    medidaModel.obterOsMaiores().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -22,13 +16,24 @@ function buscarUltimasMedidas(req, res) {
 }
 
 
-function buscarMedidasEmTempoReal(req, res) {
+function obterOsAposentados(req, res) {
 
-    var idVoto = req.params.idVoto;
+    medidaModel.obterOsAposentados().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
-    console.log(`Recuperando medidas em tempo real`);
+function obterOsBrasileiros(req, res) {
 
-    medidaModel.buscarMedidasEmTempoReal(idVoto).then(function (resultado) {
+    medidaModel.obterOsBrasileiros().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -42,7 +47,8 @@ function buscarMedidasEmTempoReal(req, res) {
 }
 
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    obterOsMaiores,
+    obterOsAposentados,
+    obterOsBrasileiros
 
 }

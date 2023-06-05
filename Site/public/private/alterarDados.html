@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterando dados... - Ballon D'or Nominees</title>
+    <link rel="shortcut icon" href="../assets/img/favicon_logo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="../css/dataChange.css">
+</head>
+
+<body>
+    <div class="box">
+        <p>Alterações de dados</p>
+        <form action="" class="form-box">
+            <div class="input-group">
+                <label for="">Usuário</label>
+                <input id="input_usuario" placeholder="Alterar nome de usuário">
+            </div>
+            <div class="input-group">
+                <label for="">E-mail*</label>
+                <input placeholder="Alterar e-mail" id="input_email">
+            </div>
+            <div class="input-group">
+                <label for="posicao">Trocar posição*</label>
+                <select id="posicao_futebol">
+                    <option value="none">Alterar posição...</option>
+                    <option value="Goleiro">Goleiro</option>
+                    <option value="Zagueiro">Zagueiro</option>
+                    <option value="Lateral-Esquerdo">Lateral Esquerdo</option>
+                    <option value="Lateral-Direito">Lateral Direito</option>
+                    <option value="Volante">Volante</option>
+                    <option value="Meio-Campista">Meio-Campista</option>
+                    <option value="Ponta-Esquerda">Ponta-Esquerda</option>
+                    <option value="Ponta-Direita">Ponta-Direita</option>
+                    <option value="Atacante">Atacante</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="posicao">Trocar voto*</label>
+                <select id="jogadores_nominees">
+                    <option value="none">Alterar voto...</option>
+                    <option value="1">Lionel Messi</option>
+                    <option value="2">Neymar Jr.</option>
+                    <option value="3">Vinicius Jr.</option>
+                    <option value="4">Erling Haaland</option>
+                    <option value="5">Kylian Mbappé</option>
+                    <option value="6">Kevin De Bruyne</option>
+                    <option value="7">Rafael Leão</option>
+                    <option value="8">Lautaro Martínez</option>
+                    <option value="9">Bernardo Silva</option>
+                    <option value="10">Rodrygo Goes</option>
+                    <option value="11">Cristiano Ronaldo</option>
+                </select>
+            <div class="input-group">
+                <label for="">Senha nova*</label>
+                <input type="password" placeholder="Alterar senha" id="input_senha_nova">
+            </div>
+        </form>
+        <div class="input-group2">
+            <button onclick="alterar()">Alterar</button>
+            <button onclick="cancelar()">Cancelar</button>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function alterar() {
+        var usernameVar = input_usuario.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha_nova.value;
+        var posicaoVar = posicao_futebol.value
+        var votoVar = jogadores_nominees.value;
+
+        console.log(posicaoVar);
+        console.log(votoVar);
+        if (usernameVar == "") {
+            usernameVar = sessionStorage.USUARIO;
+        }
+        if (emailVar == "") {
+            emailVar = sessionStorage.EMAIL_USUARIO;
+        }
+        if (posicaoVar == "none") {
+            posicaoVar = sessionStorage.POSICAO;
+        }
+        if (votoVar == "none") {
+            votoVar = sessionStorage.FK_JOGADOR;
+        }
+
+        
+    }
+
+    function cancelar() {
+        window.location.href = "painel.html";
+    }
+</script>

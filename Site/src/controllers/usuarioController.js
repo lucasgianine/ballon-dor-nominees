@@ -33,7 +33,7 @@ function entrar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-        
+
         usuarioModel.entrar(usuario, senha)
             .then(
                 function (resultado) {
@@ -66,7 +66,7 @@ function cadastrar(req, res) {
     var email = req.body.emailServer;
     var posicao = req.body.posicaoServer;
     var senha = req.body.senhaServer;
-    var confirmarSenha = req.body.confirmarSenhaServer;
+    var jogadorVotado = req.body.jogadorVotadoServer;
 
     // Faça as validações dos valores
     if (posicao == undefined) {
@@ -77,13 +77,11 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else if (confirmarSenha == undefined) {
-        res.status(400).send("Confirmar senha está undefined!");
     } else {
         console.log("passei por aqui")
-        
+
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(usuario, email, posicao, senha, confirmarSenha)
+        usuarioModel.cadastrar(usuario, email, posicao, senha, jogadorVotado)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -101,9 +99,83 @@ function cadastrar(req, res) {
     }
 }
 
+function obterPontos(req, res) {
+    usuarioModel.obterPontos()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function obterPlacar(req, res) {
+    var fkUsuario = req.body.fkUsuarioServer;
+    var placar = req.body.placarServer;
+
+    if (fkUsuario == undefined) {
+        res.status(400).send("fkUsuario está undefined!");
+    } else if (placar == undefined) {
+        res.status(400).send("Placar está undefined!");
+    } else {
+
+        console.log('Obtive Placar')
+        usuarioModel.obterPlacar(fkUsuario, placar)
+            .then(function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!")
+                }
+            }).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function obterTotal(req, res) {
+    var fkUsuario = req.body.fkUsuarioServer;
+
+    if (fkUsuario == undefined) {
+        res.status(400).send("fkUsuario está undefined!");
+    } else {
+
+        console.log('Obtive o total')
+        usuarioModel.obterPlacar(fkUsuario)
+            .then(function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!")
+                }
+            }).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    testar
+    testar,
+    obterPontos,
+    obterPlacar,
+    obterTotal
 }

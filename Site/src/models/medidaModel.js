@@ -1,27 +1,11 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idVoto, limite_linhas) {
+function obterOsMaiores() {
 
-    instrucaoSql = ''
+    instrucaoSql = '';
 
-    if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top ${limite_linhas}
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        momento,
-                        FORMAT(momento, 'HH:mm:ss') as momento_grafico
-                    from medida
-                    where fk_aquario = ${idVoto}
-                    order by id desc`;
-    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    from medida
-                    where fk_aquario = ${idVoto}
-                    order by id desc limit ${limite_linhas}`;
+    if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `SELECT apelido as JogadorFut, bolasDeOuro as BallonDor FROM jogadores WHERE bolasDeOuro > 0 ORDER BY bolasDeOuro DESC LIMIT 9;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -31,27 +15,12 @@ function buscarUltimasMedidas(idVoto, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idVoto) {
+function obterOsAposentados() {
 
-    instrucaoSql = ''
+    instrucaoSql = '';
 
-    if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 1
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        CONVERT(varchar, momento, 108) as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idVoto} 
-                    order by id desc`;
-
-    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idVoto} 
-                    order by id desc limit 1`;
+    if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `SELECT apelido as NomeJogador, bolasDeOuro as BallonDor FROM jogadores WHERE bolasDeOuro > 0 AND carreira = 'APOS' ORDER BY bolasDeOuro DESC LIMIT 9;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -61,8 +30,23 @@ function buscarMedidasEmTempoReal(idVoto) {
     return database.executar(instrucaoSql);
 }
 
+function obterOsBrasileiros() {
+
+    instrucaoSql = '';
+
+    if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `SELECT apelido as JogadorNome, bolasDeOuro as BallonDor FROM jogadores WHERE bolasDeOuro > 0 AND nacionalidade = 'BRA' ORDER BY bolasDeOuro DESC LIMIT 9;`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    obterOsMaiores,
+    obterOsAposentados,
+    obterOsBrasileiros
 }

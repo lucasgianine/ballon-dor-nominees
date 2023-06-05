@@ -76,12 +76,7 @@
         </div>
     </div>
 </body>
-
 </html>
-
-<script>
-
-</script>
 
 <script>
     // Lista com imagem dos jogadores
@@ -179,7 +174,7 @@
                 title: `Senha e confirmar senha estão diferentes!`,
                 showConfirmButton: true,
             });
-        } else if (emailVar.indexOf('@gmail.com') == -1 && emailVar.indexOf('@sptech.school') == -1) {
+        } else if (emailVar.indexOf('@gmail.com') == -1 && emailVar.indexOf('@sptech.school') == -1 && emailVar.indexOf('@hotmail.com') == -1) {
             Swal.fire({
                 position: 'center',
                 icon: 'warning',
@@ -200,25 +195,25 @@
                     emailServer: emailVar,
                     posicaoServer: posicaoVar,
                     senhaServer: senhaVar,
-                    confirmarSenhaServer: confirmarSenhaVar,
+                    // confirmarSenhaServer: confirmarSenhaVar,
+                    jogadorVotadoServer: jogadorVotadoVar
                 })
             }).then(function (resposta) {
 
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                    resposta.json().then(res => {
-                        fetch('/voto/cadastrar', {
-                            method: 'POST',
-                            headers: {
-                                "Content-Type": "application/json"
-                            },
-                            body: JSON.stringify({
-                                insertIdServer: res.insertId,
-                                jogadorVotadoServer: jogadorVotadoVar
-                            })
-                        })
-                    })
+                    // resposta.json().then(res => {
+                    //     fetch('/voto/cadastrar', {
+                    //         method: 'POST',
+                    //         headers: {
+                    //             "Content-Type": "application/json"
+                    //         },
+                    //         body: JSON.stringify({
+                    //             insertIdServer: res.insertId,
+                    //         })
+                    //     })
+                    // })
 
                     // Validação
                     Swal.fire({
