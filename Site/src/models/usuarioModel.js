@@ -1,19 +1,12 @@
 var database = require("../database/config")
 
-function listar() {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
-    var instrucao = `
-        SELECT * FROM usuario;
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-
 function entrar(usuario, senha) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", usuario, senha)
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", usuario, senha);
+
     var instrucao = `
         SELECT * FROM usuario WHERE username = '${usuario}' AND senha = '${senha}';
     `;
+    
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
@@ -32,37 +25,58 @@ function cadastrar(usuario, email, posicao, senha, jogadorVotado) {
 }
 
 function obterPontos() {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    console.log("Acessei: USUARIO MODEL \n\n function obterPontos()");
+
     var instrucao = `
     SELECT SUM(quiz.pontuacao) as Pontos, usuario.username as Membro FROM quiz JOIN usuario ON usuario.idUsuario = quiz.fkUsuario GROUP BY quiz.fkUsuario ORDER BY Pontos DESC LIMIT 8;
     `;
+
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
 function obterPlacar(fkUsuario, placar) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    console.log("Acessei: USUARIO MODEL \n\n function obterPlacar()");
+
     var instrucao = `
     INSERT INTO quiz (pontuacao, dtJogo, fkUsuario) VALUES ('${placar}', NOW(), '${fkUsuario}');
     `;
+
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
 function obterTotal(fkUsuario) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    console.log("Acessei: USUARIO MODEL \n\n function obterTotal()");
+
     var instrucao = `
     SELECT SUM(pontuacao) FROM quiz WHERE fkUsuario = ${fkUsuario};
     `;
+
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
+// function update(
+//     // usuario, email, posicao, senha, jogadorVotado, idUsuario
+//     instrucaoSQL) {
+//     console.log("Acessei: USUARIO MODEL \n function update():", 
+//     // usuario, email, posicao, senha, jogadorVotado, idUsuario
+//     instrucaoSQL);
+
+//     var instrucao = `
+//         UPDATE usuario SET ${instrucaoSQL};
+//     `;
+
+//     console.log("Executando a instrução SQL: \n" + instrucao);
+//     return database.executar(instrucao);
+// }
+
 module.exports = {
     entrar,
     cadastrar,
-    listar,
     obterPontos,
     obterPlacar,
+    // update,
     obterTotal
 };

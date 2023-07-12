@@ -5,10 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastre-se - Ballon D'or Nominees</title>
+
+    <!-- Page -->
+    <title>Escolha seu jogador favorito e crie sua conta!</title>
     <link rel="shortcut icon" href="assets/img/favicon_logo.png" type="image/x-icon">
 
+    <!-- CSS -->
     <link rel="stylesheet" href="css/cadastro.css">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
+    <!-- SweetAlert2 -->
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script> <!-- SweetAlert2 -->
 </head>
 
 <body>
@@ -72,10 +80,11 @@
                 <button onclick="cadastrar()">Cadastrar</button>
             </div>
 
-            <p>Já tenho um cadastro? <a href="login.html">Entrar!</a></p>
+            <p><a href="login.html">Já possuo um cadastro!</a></p>
         </div>
     </div>
 </body>
+
 </html>
 
 <script>
@@ -94,7 +103,7 @@
         '<iframe id="sofa-player-embed-750" src="https://widgets.sofascore.com/embed/player/750?widgetBackground=Black" style="height:600px!important;max-width:600px!important;width:100%!important;" frameborder="0" scrolling=""></iframe>' // Cristiano Ronaldo
     ];
 
-
+    // Função exclusiva para mudar a imagem do jogador (que fica exibida na tela de cadastro)
     function mudarJogador() {
         var select = document.querySelector('#jogadores_nominees');
 
@@ -124,129 +133,9 @@
         } else if (value == '11') {
             div_desempenho.innerHTML = listaJogadores[10];
         }
-
-
     }
 
     mudarJogador()
-
-
 </script>
 
-<!-- SweetAlert2 -->
-<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-
-<script>
-    function cadastrar() {
-        var select = document.querySelector('#posicao_futebol');
-        let optionValue = select.options[select.selectedIndex];
-
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-        var usuarioVar = input_usuario.value;
-        var emailVar = input_email.value;
-        var posicaoVar = optionValue.value;
-        var senhaVar = input_senha.value;
-        var confirmarSenhaVar = input_confirmar_senha.value;
-        var jogadorVotadoVar = jogadores_nominees.value;
-
-        if (usuarioVar == "" || emailVar == "" || posicaoVar == "none" || senhaVar == "" || confirmarSenhaVar == "") {
-            Swal.fire({
-                position: 'center',
-                icon: 'warning',
-                title: `Os campos precisam ser preenchidos!`,
-                showConfirmButton: true,
-            });
-        }
-        // else if (senhaVar < 8) {
-        //     Swal.fire({
-        //         position: 'center',
-        //         icon: 'warning',
-        //         title: `Senha muito fraca!`,
-        //         showConfirmButton: true,
-        //     });
-        // }
-        else if (senhaVar != confirmarSenhaVar) {
-            Swal.fire({
-                position: 'center',
-                icon: 'warning',
-                title: `Senha e confirmar senha estão diferentes!`,
-                showConfirmButton: true,
-            });
-        } else if (emailVar.indexOf('@gmail.com') == -1 && emailVar.indexOf('@sptech.school') == -1 && emailVar.indexOf('@hotmail.com') == -1) {
-            Swal.fire({
-                position: 'center',
-                icon: 'warning',
-                title: `E-mail inválido!`,
-                showConfirmButton: true,
-            });
-        } else {
-            // Enviando o valor da nova input
-            fetch("/usuarios/cadastrar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
-                    usuarioServer: usuarioVar,
-                    emailServer: emailVar,
-                    posicaoServer: posicaoVar,
-                    senhaServer: senhaVar,
-                    // confirmarSenhaServer: confirmarSenhaVar,
-                    jogadorVotadoServer: jogadorVotadoVar
-                })
-            }).then(function (resposta) {
-
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    // resposta.json().then(res => {
-                    //     fetch('/voto/cadastrar', {
-                    //         method: 'POST',
-                    //         headers: {
-                    //             "Content-Type": "application/json"
-                    //         },
-                    //         body: JSON.stringify({
-                    //             insertIdServer: res.insertId,
-                    //         })
-                    //     })
-                    // })
-
-                    // Validação
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: `Cadastro realizado com sucesso!`,
-                        time: 1500,
-                    });
-
-                    setTimeout(() => {
-                        window.location = "login.html";
-                    }, "2000")
-
-                    // limparFormulario();
-                    // finalizarAguardar();
-                } else {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'error',
-                        title: `Erro ao cadastrar-se!`,
-                        showConfirmButton: true,
-                    })
-                }
-            }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                // finalizarAguardar();
-            });
-
-            return false;
-        }
-    }
-
-    // function sumirMensagem() {
-    //     cardErro.style.display = "none"
-    // }
-</script>
+<script src="js/cadastro.js"></script>

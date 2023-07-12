@@ -28,8 +28,10 @@ fkJogador INT,
 );
 
 -- Adicionando usuários para POPULAR a tabela
+-- Se você deu GIT CLONE e quiser criar seu banco de dados, utilize esse comando para popular:
+-- OBS: O deploy deste programa não contém essas contas criadas, não tente logar em alguma conta com esses login
 INSERT INTO usuario VALUES
-	(null, 'Lucas', 'lucas.esilva@sptech.school', 'Ponta-Esquerda', '#neymarjr123', 2),
+	(null, 'Lucas', 'lucas@sptech.school', 'Ponta-Esquerda', '#neymarjr123', 2),
 	(null, 'Ester', 'ester@gmail.com', 'Meio-Campista', '#loveLusca', 1),
 	(null, 'GustavoPrado', 'g.prado@gmail.com', 'Ponta-Direita', '#marinavolta', 4),
 	(null, 'Dwuzin', 'eduramayr@gmail.com', 'Volante', '#Dwuzinn', 3),
@@ -48,6 +50,8 @@ INSERT INTO usuario VALUES
 	(null, 'g0mesz_', 'caiquegomes@gmail.com', 'Lateral-Esquerdo', '12345678', 3),
 	(null, 'Joninhas', 'jonas@gmail.com', 'Volante', '#majoninhas', 4),
 	(null, 'Dyelzin', 'adyel@gmail.com', 'Ponta-Esquerda', '#vivaamusica', 2),
+	(null, 'Vini012', 'viniciusprod@gmail.com', 'Atacante', '#prodonstudio', 1),
+	(null, 'RE$ENDE', 'resende@gmail.com', 'Volante', '#sevenrecords', 3),
 	(null, 'Guto', 'shinayderguto@gmail.com', 'Goleiro', '#goooooool', 4),
 	(null, 'jotinha', 'jota@gmail.com', 'Goleiro', '#vamosJogar', 3),
 	(null, 'rafazerakk', 'rafinhas@gmail.com', 'Zagueiro', '#editarehbom', 2),

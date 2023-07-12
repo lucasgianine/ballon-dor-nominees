@@ -1,28 +1,6 @@
 var usuarioModel = require("../models/usuarioModel");
 
-var sessoes = [];
-
-function testar(req, res) {
-    console.log("ENTRAMOS NA usuarioController");
-    res.json("ESTAMOS FUNCIONANDO!");
-}
-
-function listar(req, res) {
-    usuarioModel.listar()
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
+// var sessoes = [];
 
 function entrar(req, res) {
     var usuario = req.body.usuarioServer;
@@ -169,13 +147,57 @@ function obterTotal(req, res) {
     }
 }
 
+// function update(req, res) {
+//     // var usuario = req.body.usuarioServer;
+//     // var email = req.body.emailServer;
+//     // var posicao = req.body.posicaoServer;
+//     // var jogadorVotado = req.body.jogadorVotadoServer;
+//     // var senha = req.body.senhaServer;
+//     // var idUsuario = req.body.idServer;
+//     var instrucaoSQL = req.body.instrucaoServer;
+
+//     // if (posicao == undefined) {
+//     //     res.status(400).send("Sua posição está undefined!");
+//     // } else if (usuario == undefined) {
+//     //     res.status(400).send("Seu username está undefined!");
+//     // } else if (email == undefined) {
+//     //     res.status(400).send("Seu email está undefined!");
+//     // } else if (senha == undefined) {
+//     //     res.status(400).send("Sua senha está undefined!");
+//     // } else if (jogadorVotado == undefined) {
+//     //     res.status(400).send("Seu voto está undefined!");
+//     // } else if (idUsuario == undefined) {
+//     //     res.status(400).send("Seu ID está undefined!");}
+//     if (instrucaoSQL) {
+//         res.status(400).send("Instrução undefined!");
+//     } else {
+//         console.log('Estou na função "update" em usuarioController.js!');
+
+//         usuarioModel.update(
+//             // usuario, email, posicao, senha, jogadorVotado, idUsuario
+//             instrucaoSQL)
+//             .then(
+//                 function (resultado) {
+//                     res.json(resultado);
+//                 }
+//             ).catch(
+//                 function (erro) {
+//                     console.log(erro);
+//                     console.log(
+//                         "\nHouve um erro ao realizar o update! Erro: ",
+//                         erro.sqlMessage
+//                     );
+//                     res.status(500).json(erro.sqlMessage);
+//                 }
+//             );
+//     }
+// }
 
 module.exports = {
     entrar,
     cadastrar,
-    listar,
-    testar,
     obterPontos,
     obterPlacar,
+    // update,
     obterTotal
 }

@@ -1,3 +1,6 @@
+/* Esse arquivo não está sendo usado!!
+Decidi mante-lo para guardar um arquivo que pode ser melhorado ou modificado posteriormente */
+
 // sessão
 function validarSessao() {
     // aguardar();

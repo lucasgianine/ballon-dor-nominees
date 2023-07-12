@@ -1,3 +1,6 @@
+<!-- Esse arquivo não está disponível
+Em breve ele será melhorado e ficará disponível -->
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,22 +8,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alterando dados... - Ballon D'or Nominees</title>
+
+    <!-- Page -->
+    <title>Alterando seus dados...</title>
     <link rel="shortcut icon" href="../assets/img/favicon_logo.png" type="image/x-icon">
 
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/dataChange.css">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
+    <!-- SweetAlert2 -->
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script> <!-- SweetAlert2 -->
 </head>
 
 <body>
     <div class="box">
         <p>Alterações de dados</p>
-        <form action="" class="form-box">
+        <form action="#" class="form-box">
             <div class="input-group">
-                <label for="">Usuário</label>
+                <label for="username">Usuário</label>
                 <input id="input_usuario" placeholder="Alterar nome de usuário">
             </div>
             <div class="input-group">
-                <label for="">E-mail*</label>
+                <label for="email">E-mail*</label>
                 <input placeholder="Alterar e-mail" id="input_email">
             </div>
             <div class="input-group">
@@ -39,7 +50,7 @@
                 </select>
             </div>
             <div class="input-group">
-                <label for="posicao">Trocar voto*</label>
+                <label for="voto">Trocar voto*</label>
                 <select id="jogadores_nominees">
                     <option value="none">Alterar voto...</option>
                     <option value="1">Lionel Messi</option>
@@ -54,46 +65,18 @@
                     <option value="10">Rodrygo Goes</option>
                     <option value="11">Cristiano Ronaldo</option>
                 </select>
-            <div class="input-group">
-                <label for="">Senha nova*</label>
-                <input type="password" placeholder="Alterar senha" id="input_senha_nova">
-            </div>
+                <div class="input-group">
+                    <label for="senha">Senha nova*</label>
+                    <input type="password" placeholder="Alterar senha" id="input_senha_nova">
+                </div>
         </form>
-        <div class="input-group2">
-            <button onclick="alterar()">Alterar</button>
-            <button onclick="cancelar()">Cancelar</button>
-        </div>
     </div>
+    
+    <button onclick="alterar()">Alterar</button>
+    <button onclick="cancelar()">Cancelar</button>
 </body>
+
 </html>
 
-<script>
-    function alterar() {
-        var usernameVar = input_usuario.value;
-        var emailVar = input_email.value;
-        var senhaVar = input_senha_nova.value;
-        var posicaoVar = posicao_futebol.value
-        var votoVar = jogadores_nominees.value;
-
-        console.log(posicaoVar);
-        console.log(votoVar);
-        if (usernameVar == "") {
-            usernameVar = sessionStorage.USUARIO;
-        }
-        if (emailVar == "") {
-            emailVar = sessionStorage.EMAIL_USUARIO;
-        }
-        if (posicaoVar == "none") {
-            posicaoVar = sessionStorage.POSICAO;
-        }
-        if (votoVar == "none") {
-            votoVar = sessionStorage.FK_JOGADOR;
-        }
-
-        
-    }
-
-    function cancelar() {
-        window.location.href = "painel.html";
-    }
-</script>
+<!-- backend -->
+<script src="js/dataChange.js"></script>
