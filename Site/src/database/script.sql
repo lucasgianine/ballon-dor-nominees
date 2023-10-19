@@ -27,44 +27,6 @@ fkJogador INT,
 	FOREIGN KEY (fkJogador) REFERENCES jogadores(idJogador)
 );
 
--- Adicionando usuários para POPULAR a tabela
--- Se você deu GIT CLONE e quiser criar seu banco de dados, utilize esse comando para popular:
--- OBS: O deploy deste programa não contém essas contas criadas, não tente logar em alguma conta com esses login
-INSERT INTO usuario VALUES
-	(null, 'Lucas', 'lucas@sptech.school', 'Ponta-Esquerda', '#neymarjr123', 2),
-	(null, 'Ester', 'ester@gmail.com', 'Meio-Campista', '#loveLusca', 1),
-	(null, 'GustavoPrado', 'g.prado@gmail.com', 'Ponta-Direita', '#marinavolta', 4),
-	(null, 'Dwuzin', 'eduramayr@gmail.com', 'Volante', '#Dwuzinn', 3),
-	(null, 'Pedro', 'pedro.oliveira@sptech.school', 'Meio-Campista', '#algoritmos123', 3),
-	(null, 'Marccelo', 'marccelo@sptech.school', 'Zagueiro', '#div_quadrado', 4),
-	(null, 'Jhonny', 'jhonny@gmail.com', 'Zagueiro', '#bodybuilder', 1),
-	(null, 'Noir', 'noa.miglio@sptech.school', 'Lateral-Direito', '#airaNoSpotify', 5),
-	(null, 'Mazzoni', 'murilo.mazzoni@sptech.school', 'Atacante', '#megatronFut', 3),
-	(null, 'enzin', 'enzo@gmail.com', 'Atacante', '2207enzo', 4),
-	(null, 'nicolau', 'nicolau@gmail.com', 'Volante', '12345678', 10),
-	(null, 'Vinicius-23', 'vinicius@gmail.com', 'Meio-Campista', '87654321', 3),
-	(null, 'NayNay', 'nayra.belarmino@sptech.school', 'Atacante', '12345678', 7),
-	(null, 'EleRiu', 'gustavotorres@gmail.com', 'Atacante', '12345678', 6),
-	(null, 'Duartizin_', 'joaosilvaduartevictor@gmail.com', 'Zagueiro', '#minecraft2', 8),
-	(null, 'Juhrsin', 'juhrsin@gmail.com', 'Atacante', '290105juhrs', 1),
-	(null, 'g0mesz_', 'caiquegomes@gmail.com', 'Lateral-Esquerdo', '12345678', 3),
-	(null, 'Joninhas', 'jonas@gmail.com', 'Volante', '#majoninhas', 4),
-	(null, 'Dyelzin', 'adyel@gmail.com', 'Ponta-Esquerda', '#vivaamusica', 2),
-	(null, 'Vini012', 'viniciusprod@gmail.com', 'Atacante', '#prodonstudio', 1),
-	(null, 'RE$ENDE', 'resende@gmail.com', 'Volante', '#sevenrecords', 3),
-	(null, 'Guto', 'shinayderguto@gmail.com', 'Goleiro', '#goooooool', 4),
-	(null, 'jotinha', 'jota@gmail.com', 'Goleiro', '#vamosJogar', 3),
-	(null, 'rafazerakk', 'rafinhas@gmail.com', 'Zagueiro', '#editarehbom', 2),
-	(null, 'Kath', 'katherinne@gmail.com', 'Ponta-Direita', '#1234567', 1),
-	(null, 'Abraao', 'abraaozin@gmail.com', 'Lateral-Direito', '#29anosnaoeh30', 2),
-	(null, 'Hengler', 'henglxr@gmail.com', 'Atacante', '12345678', 2),
-	(null, 'juliarufino', 'juliarufino@hotmail.com', 'Atacante', '#cuphead123', 3),
-	(null, 'jaum', 'jaumdacarol@gmail.com', 'Meio-Campista', '#coraline', 3),
-	(null, 'CoraLine', 'lineedits@gmail.com', 'Volante', '#lineEditions', 2),
-	(null, 'Theus', 'theus@gmail.com', 'Ponta-Esquerda', '#minecraft', 1),
-	(null, 'Garrafinha', 'ga_rafinha@gmail.com', 'Zagueiro', '#garrafinha', 9),
-	(null, 'icaro', 'icarai@gmail.com', 'Atacante', '#omelhordomundo', 11);
-
 -- Inserindo dados dos jogadores (masculinos)
 INSERT INTO jogadores VALUES
 -- Jogadores
@@ -134,6 +96,44 @@ INSERT INTO jogadores VALUES
 	(null, 'Luis', 'Suarez', 'Suaréz', null, 'ESP', 'M', 'APOS', 1),
 	(null, 'Stanley', 'Matthews', 'Matthews', null, 'ING', 'M', 'APOS', 1);
 
+-- Adicionando usuários para POPULAR a tabela
+-- Se você deu GIT CLONE e quiser criar seu banco de dados, utilize esse comando para popular:
+-- OBS: O deploy deste programa não contém essas contas criadas, não tente logar em alguma conta com esses login
+INSERT INTO usuario VALUES
+	(null, 'Lucas', 'lucas@sptech.school', 'Ponta-Esquerda', '#neymarjr123', 2),
+	(null, 'Ester', 'ester@gmail.com', 'Meio-Campista', '#loveLusca', 1),
+	(null, 'GustavoPrado', 'g.prado@gmail.com', 'Ponta-Direita', '#marinavolta', 4),
+	(null, 'Dwuzin', 'eduramayr@gmail.com', 'Volante', '#Dwuzinn', 3),
+	(null, 'Pedro', 'pedro.oliveira@sptech.school', 'Meio-Campista', '#algoritmos123', 3),
+	(null, 'Marccelo', 'marccelo@sptech.school', 'Zagueiro', '#div_quadrado', 4),
+	(null, 'Jhonny', 'jhonny@gmail.com', 'Zagueiro', '#bodybuilder', 1),
+	(null, 'Noir', 'noa.miglio@sptech.school', 'Lateral-Direito', '#airaNoSpotify', 5),
+	(null, 'Mazzoni', 'murilo.mazzoni@sptech.school', 'Atacante', '#megatronFut', 3),
+	(null, 'enzin', 'enzo@gmail.com', 'Atacante', '2207enzo', 4),
+	(null, 'nicolau', 'nicolau@gmail.com', 'Volante', '12345678', 10),
+	(null, 'Vinicius-23', 'vinicius@gmail.com', 'Meio-Campista', '87654321', 3),
+	(null, 'NayNay', 'nayra.belarmino@sptech.school', 'Atacante', '12345678', 7),
+	(null, 'EleRiu', 'gustavotorres@gmail.com', 'Atacante', '12345678', 6),
+	(null, 'Duartizin_', 'joaosilvaduartevictor@gmail.com', 'Zagueiro', '#minecraft2', 8),
+	(null, 'Juhrsin', 'juhrsin@gmail.com', 'Atacante', '290105juhrs', 1),
+	(null, 'g0mesz_', 'caiquegomes@gmail.com', 'Lateral-Esquerdo', '12345678', 3),
+	(null, 'Joninhas', 'jonas@gmail.com', 'Volante', '#majoninhas', 4),
+	(null, 'Dyelzin', 'adyel@gmail.com', 'Ponta-Esquerda', '#vivaamusica', 2),
+	(null, 'Vini012', 'viniciusprod@gmail.com', 'Atacante', '#prodonstudio', 1),
+	(null, 'RE$ENDE', 'resende@gmail.com', 'Volante', '#sevenrecords', 3),
+	(null, 'Guto', 'shinayderguto@gmail.com', 'Goleiro', '#goooooool', 4),
+	(null, 'jotinha', 'jota@gmail.com', 'Goleiro', '#vamosJogar', 3),
+	(null, 'rafazerakk', 'rafinhas@gmail.com', 'Zagueiro', '#editarehbom', 2),
+	(null, 'Kath', 'katherinne@gmail.com', 'Ponta-Direita', '#1234567', 1),
+	(null, 'Abraao', 'abraaozin@gmail.com', 'Lateral-Direito', '#29anosnaoeh30', 2),
+	(null, 'Hengler', 'henglxr@gmail.com', 'Atacante', '12345678', 2),
+	(null, 'juliarufino', 'juliarufino@hotmail.com', 'Atacante', '#cuphead123', 3),
+	(null, 'jaum', 'jaumdacarol@gmail.com', 'Meio-Campista', '#coraline', 3),
+	(null, 'CoraLine', 'lineedits@gmail.com', 'Volante', '#lineEditions', 2),
+	(null, 'Theus', 'theus@gmail.com', 'Ponta-Esquerda', '#minecraft', 1),
+	(null, 'Garrafinha', 'ga_rafinha@gmail.com', 'Zagueiro', '#garrafinha', 9),
+	(null, 'icaro', 'icarai@gmail.com', 'Atacante', '#omelhordomundo', 11);
+	
 -- Criando a tabela QUIZ
 CREATE TABLE quiz (
 idQuiz INT PRIMARY KEY AUTO_INCREMENT,
