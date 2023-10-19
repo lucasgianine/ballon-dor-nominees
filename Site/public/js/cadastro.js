@@ -20,8 +20,6 @@ function cadastrar() {
         });
     } else if (
         senhaVar.length < 8
-        && senhaVar.indexOf('@') == - 1 || senhaVar.indexOf('_') == - 1 || senhaVar.indexOf('#') == - 1 || senhaVar.indexOf('%') == - 1 || senhaVar.indexOf('!') == - 1 || senhaVar.indexOf('&') == - 1
-        && senhaVar.indexOf(0) == - 1 || senhaVar.indexOf(1) == - 1 || senhaVar.indexOf(2) == - 1 || senhaVar.indexOf(3) == - 1 || senhaVar.indexOf(4) == - 1 || senhaVar.indexOf(5) == - 1 || senhaVar.indexOf(6) == - 1 || senhaVar.indexOf(7) == - 1 || senhaVar.indexOf(8) == - 1 || senhaVar.indexOf(9) == - 1
     ) {
         Swal.fire({
             position: 'center',
